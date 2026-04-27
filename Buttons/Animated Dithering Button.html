@@ -89,7 +89,7 @@
   .dither-btn .face {
     position: relative;
     z-index: 2;
-    margin: 4px;                         /* 4px ring around the face */
+    margin: 6px;                         /* 6px ring around the face */
     padding: 10px 16px;                  /* 10 top/bottom · 16 sides */
     transition: margin 140ms ease, font-weight 140ms ease;
     background: var(--stage-bg);         /* match page bg, not white */
@@ -121,7 +121,7 @@
     border-radius: inherit;
     z-index: 1;
     pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.23'/><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23w)' opacity='0.11'/></svg>");
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.29'/><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23w)' opacity='0.14'/></svg>");
     background-size: 80px 80px;          /* keeps speckle small (~size 0.5) */
     mix-blend-mode: normal;
     animation: noise-drift 12s ease-in-out infinite;
@@ -138,12 +138,12 @@
   .dither-btn.lg .face { padding: 14px 22px; font-size: 18px; }
 
   /* XL: +8px padding all around (base 10/16 → 18/24), thicker border + bigger type */
-  .dither-btn.xl .face { padding: 23px 34px; font-size: 22px; margin: 6px; }
-  .dither-btn.xl:hover .face { margin: 10px; }
+  .dither-btn.xl .face { padding: 23px 34px; font-size: 22px; margin: 8px; }
+  .dither-btn.xl:hover .face { margin: 12px; }
 
-  /* hover: border grows from 4px → 7px, text from semi-bold → bold */
+  /* hover: border grows from 6px → 9px, text from semi-bold → bold */
   .dither-btn:hover .face {
-    margin: 7px;
+    margin: 9px;
     font-weight: 700;
   }
 </style>
