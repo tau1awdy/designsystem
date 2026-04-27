@@ -36,8 +36,7 @@ html, body {
 .page-wrapper {
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  overflow: hidden;
+  clip-path: inset(0 round 45px);
 }
 
 .page-shader-host {
@@ -175,7 +174,7 @@ html, body {
   .page-content {
     margin: 10px;
     height: calc(100% - 20px);
-    border-radius: 17px;
+    border-radius: 34px;
     padding: var(--space-4);
   }
 
@@ -195,6 +194,8 @@ html, body {
     grid-template-columns: 1fr;
     margin-top: var(--space-3);
     padding: 0;
+    justify-items: center;
+    align-content: center;
   }
 
   .page-actions .dither-btn-wrapper {
