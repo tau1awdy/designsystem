@@ -29,7 +29,7 @@ html, body {
   left: 20px;
   right: 20px;
   bottom: 20px;
-  border-radius: 4px;
+  border-radius: 20px;
   filter: drop-shadow(0 1px 1.5px rgba(44,44,44,0.14));
 }
 
@@ -69,10 +69,10 @@ html, body {
 .page-content {
   position: relative;
   z-index: 2;
-  margin: 20px;
-  height: calc(100% - 40px);
+  margin: 15px;
+  height: calc(100% - 30px);
   background: var(--color-bg);
-  border-radius: inherit;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -158,15 +158,16 @@ html, body {
 
 @media (max-width: 768px) {
   .page-border {
-    top: 16px;
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
   }
 
   .page-content {
-    margin: 16px;
-    height: calc(100% - 32px);
+    margin: 10px;
+    height: calc(100% - 20px);
+    border-radius: 6px;
     padding: var(--space-4);
   }
 
@@ -384,9 +385,9 @@ html, body {
   const PARAMS = {
     colorBack: hexRGB('#2c2c2c'),
     colorFront: hexRGB('#ffffff'),
-    size: 2.2,
+    size: 10,
     scale: 1.32,
-    speed: 0.54,
+    speed: 0.15,
     offsetX: 0.5,
   };
 
