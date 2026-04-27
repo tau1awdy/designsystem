@@ -44,7 +44,6 @@
   bottom: -1px;
   border-radius: inherit;
   background: var(--color-bg);
-  border: 1px solid var(--color-bg);
   pointer-events: none;
   z-index: 1;
 }
