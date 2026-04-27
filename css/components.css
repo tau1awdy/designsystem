@@ -12,6 +12,8 @@
   filter: drop-shadow(0 1px 1.5px rgba(44,44,44,0.14));
   transition: transform var(--transition-fast);
   font-family: inherit;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .dither-btn:active { transform: translateY(1px); }
@@ -24,7 +26,7 @@
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
-  background: var(--color-primary);
+  background: var(--color-bg);
 }
 
 .dither-btn .shader-host > canvas {

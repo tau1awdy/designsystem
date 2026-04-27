@@ -58,6 +58,8 @@
     filter: drop-shadow(0 1px 1.5px rgba(44,44,44,0.14));
     transition: transform 120ms ease;
     font-family: inherit;
+    -webkit-appearance: none;
+    appearance: none;
   }
   .dither-btn:active { transform: translateY(1px); }
   .dither-btn:focus-visible { outline: 2px solid #2C2C2C; outline-offset: 4px; }
@@ -70,7 +72,7 @@
     overflow: hidden;
     z-index: 0;
     pointer-events: none;
-    background: #2b2b2b;       /* solid fallback color */
+    background: var(--stage-bg);
   }
   .dither-btn .shader-host > canvas {
     width: 100%;
