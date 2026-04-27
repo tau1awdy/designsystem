@@ -16,10 +16,7 @@ html, body {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  background-color: var(--color-bg);
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23w)' opacity='0.06'/></svg>");
-  background-size: 80px 80px;
-  animation: noise-drift 12s ease-in-out infinite;
+  background: var(--color-bg);
   font-family: var(--font-sans);
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
@@ -132,20 +129,26 @@ html, body {
   letter-spacing: -0.02em;
   margin: 0;
   max-width: 800px;
-  color: var(--color-ink);
+  color: transparent;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23w)' opacity='0.06'/></svg>");
+  -webkit-background-clip: text;
+  background-clip: text;
   background-size: 80px 80px;
+  background-color: var(--color-ink);
   animation: noise-drift 12s ease-in-out infinite;
 }
 
 .page-hero .subtitle {
   font-size: clamp(11pt, 1.8vw, 18pt);
   font-weight: var(--font-weight-medium);
-  color: var(--color-gray-400);
+  color: transparent;
   margin: 0;
   letter-spacing: -0.01em;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23w)' opacity='0.06'/></svg>");
+  -webkit-background-clip: text;
+  background-clip: text;
   background-size: 80px 80px;
+  background-color: var(--color-gray-400);
   animation: noise-drift 12s ease-in-out infinite;
 }
 
