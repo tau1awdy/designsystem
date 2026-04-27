@@ -4,7 +4,7 @@
   isolation: isolate;
   box-sizing: border-box;
   background: var(--color-bg);
-  border: 0;
+  border: 1px solid var(--color-bg);
   padding: 0;
   border-radius: var(--radius-full);
   cursor: pointer;
@@ -35,16 +35,7 @@
   display: block;
 }
 
-.dither-btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 1px solid var(--color-bg);
-  box-sizing: border-box;
-  pointer-events: none;
-  z-index: 1;
-}
+
 
 .dither-btn .face {
   position: relative;
