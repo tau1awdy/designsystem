@@ -29,7 +29,7 @@ html, body {
   left: 20px;
   right: 20px;
   bottom: 20px;
-  border-radius: 6px;
+  border-radius: 4px;
   filter: drop-shadow(0 1px 1.5px rgba(44,44,44,0.14));
 }
 
@@ -310,9 +310,10 @@ html, body {
       uv /= u_scale;
       float t = u_time * u_speed;
       uv.x += u_offsetX;
-      float wave1 = sin(uv.x * 2.0 + t * 0.7) * cos(uv.y * 2.0 + t * 0.5);
-      float wave2 = sin((uv.x + wave1 * 0.4) * 3.0 + t * 0.9) * cos((uv.y + wave1 * 0.4) * 3.0 + t * 0.6);
-      float intensity = wave2 * 0.5 + 0.5;
+      float wave1 = sin(uv.x * 1.5 + t * 1.1) * cos(uv.y * 1.5 + t * 0.9);
+      float wave2 = sin(uv.x * 3.0 + wave1 * 0.8 + t * 1.3) * cos(uv.y * 3.0 + wave1 * 0.6 + t * 1.1);
+      float wave3 = sin((uv.x + wave2 * 0.5) * 5.0 + t * 1.7) * cos((uv.y + wave2 * 0.5) * 5.0 + t * 1.4);
+      float intensity = wave3 * 0.5 + 0.5;
       intensity = clamp(intensity, 0.0, 1.0);
       vec2 block = floor(px / u_size);
       float threshold = bayer4(block);
@@ -383,9 +384,9 @@ html, body {
   const PARAMS = {
     colorBack: hexRGB('#2c2c2c'),
     colorFront: hexRGB('#ffffff'),
-    size: 7,
-    scale: 1.5,
-    speed: 0.3,
+    size: 2.2,
+    scale: 1.32,
+    speed: 0.54,
     offsetX: 0.5,
   };
 
