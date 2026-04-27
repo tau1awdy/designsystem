@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pages — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/design-tokens.css" />
+<link rel="stylesheet" href="../css/layout.css" />
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Design System</h2>
+    <div class="subtitle">2026 Portfolio</div>
+  </div>
+  <nav class="sidebar-nav" id="sidebar-nav"></nav>
+</aside>
+
+<main class="content">
+  <div class="page-header">
+    <h1>Pages</h1>
+    <div class="description">Full page layouts composed from templates, organisms, molecules, and atoms</div>
+  </div>
+
+  <section class="page-section">
+    <div class="hub-grid">
+      <a href="home.html" class="hub-card">
+        <h3>Home</h3>
+        <p>Full-viewport hero page with animated dithering border, headline, and CTA buttons</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<script src="../js/docs.js"></script>
+</body>
+</html>
