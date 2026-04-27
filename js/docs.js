@@ -43,6 +43,7 @@ const NAV_CONFIG = [
     label: 'Pages',
     divider: true,
     children: [
+      { id: 'overview', label: 'Page Overview', path: 'pages/_overview.html' },
       { id: 'home', label: 'Home', path: 'pages/home.html' },
     ]
   },
