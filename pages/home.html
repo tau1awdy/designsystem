@@ -29,7 +29,7 @@ html, body {
   left: 20px;
   right: 20px;
   bottom: 20px;
-  border-radius: 8px;
+  border-radius: 6px;
   filter: drop-shadow(0 1px 1.5px rgba(44,44,44,0.14));
 }
 
@@ -142,11 +142,19 @@ html, body {
   padding: 8px 0;
 }
 
-.page-actions > :nth-child(1) { grid-column: 1; grid-row: 1; }
-.page-actions > :nth-child(2) { grid-column: 2; grid-row: 1; }
-.page-actions > :nth-child(3) { grid-column: 3; grid-row: 1; }
-.page-actions > :nth-child(4) { grid-column: 2; grid-row: 2; }
-.page-actions > :nth-child(5) { grid-column: 3; grid-row: 2; }
+.page-actions .dither-btn-wrapper {
+  height: 62px;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.page-actions-row-bottom {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+}
 
 @media (max-width: 768px) {
   .page-border {
@@ -180,9 +188,13 @@ html, body {
     padding: 0;
   }
 
-  .page-actions > :nth-child(n) {
-    grid-column: auto;
-    grid-row: auto;
+  .page-actions .dither-btn-wrapper {
+    height: auto;
+  }
+
+  .page-actions-row-bottom {
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>
@@ -222,17 +234,19 @@ html, body {
         <span class="face">Speaking</span>
       </button></div>
 
-      <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader>
-        <span class="shader-host"><canvas></canvas></span>
-        <span class="noise"></span>
-        <span class="face">Contact</span>
-      </button></div>
+      <div class="page-actions-row-bottom">
+        <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader>
+          <span class="shader-host"><canvas></canvas></span>
+          <span class="noise"></span>
+          <span class="face">Contact</span>
+        </button></div>
 
-      <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader>
-        <span class="shader-host"><canvas></canvas></span>
-        <span class="noise"></span>
-        <span class="face">Resume</span>
-      </button></div>
+        <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader>
+          <span class="shader-host"><canvas></canvas></span>
+          <span class="noise"></span>
+          <span class="face">Resume</span>
+        </button></div>
+      </div>
     </div>
     </div>
   </div>
