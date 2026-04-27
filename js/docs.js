@@ -43,7 +43,7 @@ const NAV_CONFIG = [
     label: 'Pages',
     divider: true,
     children: [
-      { id: 'overview', label: 'Page Overview', path: 'pages/_overview.html' },
+      { id: 'overview', label: 'Page Overview', path: 'pages/overview.html' },
       { id: 'home', label: 'Home', path: 'pages/home.html' },
     ]
   },
@@ -85,7 +85,7 @@ function buildSidebar() {
       const isOpen = childrenWithHref.some(c => location.pathname.includes(c.href));
       html += `<div class="nav-section-header" data-section="${section.id}">
         <span>${section.label}</span>
-        <span class="arrow ${isOpen ? 'open' : ''}">▶</span>
+        <span class="arrow ${isOpen ? 'open' : ''}">›</span>
       </div>`;
       html += `<ul class="nav-children ${isOpen ? '' : 'collapsed'}" id="nav-${section.id}">`;
       for (const child of childrenWithHref) {
@@ -96,7 +96,7 @@ function buildSidebar() {
     } else {
       html += `<div class="nav-section-header" data-section="${section.id}" style="cursor:default;">
         <span>${section.label}</span>
-        <span class="arrow" style="opacity:0.3;">▶</span>
+        <span class="arrow" style="opacity:0.3;">›</span>
       </div>`;
     }
 
