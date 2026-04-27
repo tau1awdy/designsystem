@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Animated Dithering Button</title>
+<style>
+  :root {
+    --stage-bg: #f5f5f3;
+    --ink: #2c2c2c;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: var(--stage-bg);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+  .stage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 48px 24px;
+  }
+  .hint {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a8a86;
+  }
+  .row {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* === Button: outer = animated dithering ring; inner = white pill === */
+  .dither-btn {
+    position: relative;
+    display: inline-flex;
+    isolation: isolate;
+    box-sizing: border-box;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    user-select: none;
+    /* small drop shadow #2C2C2C @ 14%, tighter than inner shadow */
+    filter: drop-shadow(0 1px 1.5px rgba(44,44,44,0.14));
+    transition: transform 120ms ease;
+    font-family: inherit;
+  }
+  .dither-btn:active { transform: translateY(1px); }
+  .dither-btn:focus-visible { outline: 2px solid #2C2C2C; outline-offset: 4px; }
+
+  /* Shader canvas fills the entire button (ring + face area). */
+  .dither-btn .shader-host {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+    background: #2b2b2b;       /* solid fallback color */
+  }
+  .dither-btn .shader-host > canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* The white inner pill — sits 4px inside, hiding all but the ring + noise. */
+  .dither-btn .face {
+    position: relative;
+    z-index: 2;
+    margin: 4px;                         /* 4px ring around the face */
+    padding: 10px 16px;                  /* 10 top/bottom · 16 sides */
+    transition: margin 140ms ease, font-weight 140ms ease;
+    background: var(--stage-bg);         /* match page bg, not white */
+    border-radius: 999px;
+    box-sizing: border-box;
+    /* prominent inner shadow */
+    box-shadow:
+      inset 0 0 0 0.5px rgba(44,44,44,0.14),
+      inset 0 2px 3px rgba(44,44,44,0.22),
+      inset 0 3px 6px -2px rgba(44,44,44,0.10),
+      inset 0 -1px 2px rgba(255,255,255,0.30);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Noise overlay — Duo noise per Figma spec: black @ 23%, white @ 11%,
+     size 0.5px, density 100%. Sits over the entire button (ring AND face),
+     above the shader, below the text. */
+  .dither-btn .noise {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.23'/><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23w)' opacity='0.11'/></svg>");
+    background-size: 80px 80px;          /* keeps speckle small (~size 0.5) */
+    mix-blend-mode: normal;
+  }
+
+  .dither-btn.lg .face { padding: 14px 22px; font-size: 18px; }
+
+  /* XL: +8px padding all around (base 10/16 → 18/24), thicker border + bigger type */
+  .dither-btn.xl .face { padding: 23px 34px; font-size: 22px; margin: 6px; }
+  .dither-btn.xl:hover .face { margin: 10px; }
+
+  /* hover: border grows from 4px → 7px, text from semi-bold → bold */
+  .dither-btn:hover .face {
+    margin: 7px;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="hint">Animated dithering border · sphere · 4×4</div>
+
+    <div class="row">
+      <button class="dither-btn" type="button" data-shader>
+        <span class="shader-host"><canvas></canvas></span>
+        <span class="noise"></span>
+        <span class="face">View Project</span>
+      </button>
+
+      <button class="dither-btn" type="button" data-shader>
+        <span class="shader-host"><canvas></canvas></span>
+        <span class="noise"></span>
+        <span class="face">Get in Touch</span>
+      </button>
+
+      <button class="dither-btn lg" type="button" data-shader>
+        <span class="shader-host"><canvas></canvas></span>
+        <span class="noise"></span>
+        <span class="face">Download CV</span>
+      </button>
+
+      <button class="dither-btn xl" type="button" data-shader>
+        <span class="shader-host"><canvas></canvas></span>
+        <span class="noise"></span>
+        <span class="face">Experience</span>
+      </button>
+    </div>
+
+    <div class="hint" id="status">starting shader…</div>
+  </div>
+
+<script>
+/* Hand-rolled WebGL dithering shader — recreates paper-design's Dithering
+ * (shape: sphere, type: 4x4) with the same parameter shape:
+ *   colorBack #2b2b2b, colorFront #ffffff, size 11, speed 0.5, scale 2.28,
+ *   offsetY -0.06.
+ * One ScreenQuad per button canvas; one shared shader program. */
+(() => {
+  const VERT = `
+    attribute vec2 a_pos;
+    varying vec2 v_uv;
+    void main() {
+      v_uv = a_pos * 0.5 + 0.5;
+      gl_Position = vec4(a_pos, 0.0, 1.0);
+    }
+  `;
+
+  // Bayer 4x4 ordered-dither threshold matrix, normalized to [0,1].
+  // Sphere field: distance from a moving 3D point projected to 2D = bright disc.
+  const FRAG = `
+    precision highp float;
+    varying vec2 v_uv;
+    uniform vec2 u_resolution;
+    uniform float u_time;
+    uniform vec3 u_colorBack;
+    uniform vec3 u_colorFront;
+    uniform float u_size;       // pixel block size
+    uniform float u_scale;      // pattern zoom
+    uniform float u_offsetY;
+    uniform float u_aspect;     // w/h, used to keep sphere round on wide canvases
+
+    float bayer4(vec2 p) {
+      // 4x4 bayer matrix
+      int x = int(mod(p.x, 4.0));
+      int y = int(mod(p.y, 4.0));
+      int idx = x + y * 4;
+      float v = 0.0;
+      if (idx == 0)  v =  0.0;
+      else if (idx == 1)  v =  8.0;
+      else if (idx == 2)  v =  2.0;
+      else if (idx == 3)  v = 10.0;
+      else if (idx == 4)  v = 12.0;
+      else if (idx == 5)  v =  4.0;
+      else if (idx == 6)  v = 14.0;
+      else if (idx == 7)  v =  6.0;
+      else if (idx == 8)  v =  3.0;
+      else if (idx == 9)  v = 11.0;
+      else if (idx == 10) v =  1.0;
+      else if (idx == 11) v =  9.0;
+      else if (idx == 12) v = 15.0;
+      else if (idx == 13) v =  7.0;
+      else if (idx == 14) v = 13.0;
+      else                v =  5.0;
+      return (v + 0.5) / 16.0; // [0,1]
+    }
+
+    void main() {
+      // SNAP everything to size×size pixel blocks — both the sample point
+      // for the sphere intensity AND the bayer index. This guarantees every
+      // pixel inside a block gets the same intensity AND the same threshold,
+      // so the entire block becomes one solid square (black or white).
+      vec2 px = gl_FragCoord.xy;
+      vec2 blockPx = floor(px / u_size) * u_size + 0.5 * u_size; // block center, in pixels
+      vec2 blockUV = blockPx / u_resolution;                      // [0,1] uv at block center
+
+      // UV space centered, aspect-corrected (so sphere stays round).
+      vec2 uv = (blockUV - 0.5);
+      uv.x *= u_aspect;
+      uv /= u_scale;
+
+      float t = u_time * 0.5;
+      uv.x += sin(t * 0.7) * 0.35;
+      uv.y += cos(t * 0.9) * 0.25 + u_offsetY;
+
+      // Sphere with moving lambert light.
+      float r = length(uv);
+      float sphereMask = step(r, 1.0);
+      float z = sqrt(max(0.0, 1.0 - r * r));
+      vec3 n = vec3(uv, z);
+      vec3 light = normalize(vec3(sin(t * 1.1), cos(t * 0.8), 0.7));
+      float lambert = max(0.0, dot(n, light));
+      float intensity = lambert * sphereMask;
+      intensity = clamp(intensity * 1.35, 0.0, 1.0);
+
+      // Bayer index also runs on the BLOCK grid, not pixel grid.
+      vec2 block = floor(px / u_size);
+      float threshold = bayer4(block);
+      float bit = step(threshold, intensity);
+
+      vec3 col = mix(u_colorBack, u_colorFront, bit);
+      gl_FragColor = vec4(col, 1.0);
+    }
+  `;
+
+  function compile(gl, type, src) {
+    const sh = gl.createShader(type);
+    gl.shaderSource(sh, src);
+    gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+      console.error('shader error', gl.getShaderInfoLog(sh), src);
+      gl.deleteShader(sh);
+      return null;
+    }
+    return sh;
+  }
+
+  function makeProgram(gl) {
+    const vs = compile(gl, gl.VERTEX_SHADER, VERT);
+    const fs = compile(gl, gl.FRAGMENT_SHADER, FRAG);
+    if (!vs || !fs) return null;
+    const p = gl.createProgram();
+    gl.attachShader(p, vs);
+    gl.attachShader(p, fs);
+    gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) {
+      console.error('link error', gl.getProgramInfoLog(p));
+      return null;
+    }
+    return p;
+  }
+
+  function setupCanvas(canvas) {
+    const gl = canvas.getContext('webgl', { antialias: false, premultipliedAlpha: false });
+    if (!gl) return null;
+    const program = makeProgram(gl);
+    if (!program) return null;
+
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+      -1, -1,  1, -1,  -1, 1,
+      -1,  1,  1, -1,   1, 1,
+    ]), gl.STATIC_DRAW);
+
+    const aPos = gl.getAttribLocation(program, 'a_pos');
+    const uRes = gl.getUniformLocation(program, 'u_resolution');
+    const uTime = gl.getUniformLocation(program, 'u_time');
+    const uBack = gl.getUniformLocation(program, 'u_colorBack');
+    const uFront = gl.getUniformLocation(program, 'u_colorFront');
+    const uSize = gl.getUniformLocation(program, 'u_size');
+    const uScale = gl.getUniformLocation(program, 'u_scale');
+    const uOffY = gl.getUniformLocation(program, 'u_offsetY');
+    const uAspect = gl.getUniformLocation(program, 'u_aspect');
+
+    return { gl, program, buf, aPos, uRes, uTime, uBack, uFront, uSize, uScale, uOffY, uAspect };
+  }
+
+  function hexRGB(hex) {
+    const n = parseInt(hex.slice(1), 16);
+    return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
+  }
+
+  const PARAMS = {
+    colorBack: hexRGB('#2b2b2b'),
+    colorFront: hexRGB('#ffffff'),
+    size: 7,
+    scale: 2.28,
+    offsetY: -0.06,
+  };
+
+  const status = document.getElementById('status');
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const ctxs = [];
+
+  document.querySelectorAll('[data-shader] canvas').forEach((canvas) => {
+    const ctx = setupCanvas(canvas);
+    if (!ctx) return;
+    ctxs.push({ canvas, ...ctx });
+  });
+
+  function resize() {
+    for (const c of ctxs) {
+      const rect = c.canvas.getBoundingClientRect();
+      const w = Math.max(2, Math.round(rect.width * dpr));
+      const h = Math.max(2, Math.round(rect.height * dpr));
+      if (c.canvas.width !== w || c.canvas.height !== h) {
+        c.canvas.width = w;
+        c.canvas.height = h;
+      }
+    }
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const t0 = performance.now();
+  function frame() {
+    const t = (performance.now() - t0) / 1000;
+    for (const c of ctxs) {
+      const { gl, program } = c;
+      gl.viewport(0, 0, c.canvas.width, c.canvas.height);
+      gl.useProgram(program);
+      gl.bindBuffer(gl.ARRAY_BUFFER, c.buf);
+      gl.enableVertexAttribArray(c.aPos);
+      gl.vertexAttribPointer(c.aPos, 2, gl.FLOAT, false, 0, 0);
+      gl.uniform2f(c.uRes, c.canvas.width, c.canvas.height);
+      gl.uniform1f(c.uTime, t);
+      gl.uniform3f(c.uBack, ...PARAMS.colorBack);
+      gl.uniform3f(c.uFront, ...PARAMS.colorFront);
+      gl.uniform1f(c.uSize, PARAMS.size);
+      gl.uniform1f(c.uScale, PARAMS.scale);
+      gl.uniform1f(c.uOffY, PARAMS.offsetY);
+      gl.uniform1f(c.uAspect, c.canvas.width / c.canvas.height);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+    }
+    requestAnimationFrame(frame);
+  }
+  if (ctxs.length) {
+    requestAnimationFrame(frame);
+    status.textContent = `webgl dithering · sphere · 4×4 · ×${ctxs.length}`;
+  } else {
+    status.textContent = 'webgl not available';
+  }
+})();
+</script>
+</body>
+</html>

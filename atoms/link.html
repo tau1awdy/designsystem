@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Link — Atoms · Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/design-tokens.css" />
+<link rel="stylesheet" href="../css/layout.css" />
+<style>
+  .link-demo {
+    font-size: var(--text-lg);
+  }
+  .link-demo a {
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--color-gray-300);
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color var(--transition-fast);
+  }
+  .link-demo a:hover {
+    text-decoration-color: var(--color-ink);
+  }
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Design System</h2>
+    <div class="subtitle">2026 Portfolio</div>
+  </div>
+  <nav class="sidebar-nav" id="sidebar-nav"></nav>
+</aside>
+
+<main class="content">
+  <div class="page-header">
+    <h1>Link</h1>
+    <div class="description">Inline text link with underline animation</div>
+  </div>
+
+  <section class="page-section">
+    <h2>Default</h2>
+    <div class="component-preview">
+      <p class="link-demo">This is an <a href="#">inline link</a> within body text. Hover to see the underline transition.</p>
+    </div>
+
+    <div class="code-block">
+      <button class="copy-btn">Copy</button>
+      <pre><code>&lt;a href="#"&gt;inline link&lt;/a&gt;</code></pre>
+    </div>
+  </section>
+</main>
+
+<script src="../js/docs.js"></script>
+</body>
+</html>

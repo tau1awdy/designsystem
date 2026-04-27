@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Changelog — Dev · Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/design-tokens.css" />
+<link rel="stylesheet" href="../css/layout.css" />
+<style>
+  .changelog-entry {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+  .changelog-entry:last-child {
+    border-bottom: none;
+  }
+  .changelog-entry .version {
+    font-family: var(--font-mono);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--text-base);
+  }
+  .changelog-entry .date {
+    font-size: var(--text-sm);
+    color: var(--color-gray-400);
+    margin-top: var(--space-1);
+  }
+  .changelog-entry ul {
+    margin-top: var(--space-2);
+    margin-bottom: 0;
+  }
+  .changelog-entry ul li {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+  }
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Design System</h2>
+    <div class="subtitle">2026 Portfolio</div>
+  </div>
+  <nav class="sidebar-nav" id="sidebar-nav"></nav>
+</aside>
+
+<main class="content">
+  <div class="page-header">
+    <h1>Changelog</h1>
+    <div class="description">Version history and update log</div>
+  </div>
+
+  <section class="page-section">
+    <div class="changelog-entry">
+      <div class="version">v1.0.0</div>
+      <div class="date">April 2026</div>
+      <ul>
+        <li>Initial release</li>
+        <li>Design tokens: colours, typography, spacing, radii, shadows</li>
+        <li>Brand section: logo, colours, typography pages</li>
+        <li>Atom components: button (WebGL dithering), link, badge, input</li>
+        <li>Dev section: tokens reference, setup guide, changelog</li>
+        <li>Left sidebar navigation with collapsible sections</li>
+        <li>Responsive layout with mobile sidebar toggle</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<script src="../js/docs.js"></script>
+</body>
+</html>

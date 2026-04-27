@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Setup — Dev · Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/design-tokens.css" />
+<link rel="stylesheet" href="../css/layout.css" />
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Design System</h2>
+    <div class="subtitle">2026 Portfolio</div>
+  </div>
+  <nav class="sidebar-nav" id="sidebar-nav"></nav>
+</aside>
+
+<main class="content">
+  <div class="page-header">
+    <h1>Setup</h1>
+    <div class="description">How to install and use this design system</div>
+  </div>
+
+  <section class="page-section">
+    <h2>Quick Start</h2>
+    <p>This design system is a plain CSS/HTML system with zero dependencies. To use it in your project:</p>
+  </section>
+
+  <section class="page-section">
+    <h2>Include the Tokens</h2>
+    <div class="code-block">
+      <button class="copy-btn">Copy</button>
+      <pre><code>&lt;link rel="stylesheet" href="css/design-tokens.css" /&gt;</code></pre>
+    </div>
+    <p>This gives you all CSS custom properties — colours, type scale, spacing, shadows, and radii.</p>
+  </section>
+
+  <section class="page-section">
+    <h2>Include Components</h2>
+    <div class="code-block">
+      <button class="copy-btn">Copy</button>
+      <pre><code>&lt;link rel="stylesheet" href="css/components.css" /&gt;</code></pre>
+    </div>
+    <p>Add this for pre-built component styles (the dithering button, etc).</p>
+  </section>
+
+  <section class="page-section">
+    <h2>Import Google Font</h2>
+    <p>The system uses Inter. Add this to your <code>&lt;head&gt;</code>:</p>
+    <div class="code-block">
+      <button class="copy-btn">Copy</button>
+      <pre><code>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2>File Structure</h2>
+    <div class="code-block">
+      <pre><code>css/
+  design-tokens.css    ← Custom properties
+  layout.css           ← Layout &amp; chrome
+  components.css       ← Component styles
+js/
+  docs.js              ← Sidebar nav, copy buttons
+brand/                 ← Logo, colours, typography
+atoms/                 ← Button, link, badge, input
+molecules/             ← Coming soon
+organisms/             ← Coming soon
+templates/             ← Coming soon
+pages/                 ← Coming soon
+dev/                   ← Tokens, setup, changelog</code></pre>
+    </div>
+  </section>
+</main>
+
+<script src="../js/docs.js"></script>
+</body>
+</html>

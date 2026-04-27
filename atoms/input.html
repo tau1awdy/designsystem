@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Input — Atoms · Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/design-tokens.css" />
+<link rel="stylesheet" href="../css/layout.css" />
+<style>
+  .ds-input {
+    display: block;
+    width: 280px;
+    padding: 10px 14px;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    color: var(--color-ink);
+    background: var(--color-surface);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  .ds-input:focus {
+    border-color: var(--color-ink);
+    box-shadow: 0 0 0 2px rgba(44,44,44,0.1);
+  }
+  .ds-input::placeholder {
+    color: var(--color-gray-300);
+  }
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Design System</h2>
+    <div class="subtitle">2026 Portfolio</div>
+  </div>
+  <nav class="sidebar-nav" id="sidebar-nav"></nav>
+</aside>
+
+<main class="content">
+  <div class="page-header">
+    <h1>Input</h1>
+    <div class="description">Text input field with focus ring</div>
+  </div>
+
+  <section class="page-section">
+    <h2>Default</h2>
+    <div class="component-preview">
+      <input class="ds-input" type="text" placeholder="Enter your email" />
+    </div>
+
+    <div class="code-block">
+      <button class="copy-btn">Copy</button>
+      <pre><code>&lt;input class="ds-input" type="text" placeholder="Enter your email" /&gt;</code></pre>
+    </div>
+  </section>
+</main>
+
+<script src="../js/docs.js"></script>
+</body>
+</html>

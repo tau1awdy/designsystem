@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Typography — Brand · Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/design-tokens.css" />
+<link rel="stylesheet" href="../css/layout.css" />
+<style>
+  .type-grid {
+    display: grid;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .weight-sample {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-gray-200);
+  }
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Design System</h2>
+    <div class="subtitle">2026 Portfolio</div>
+  </div>
+  <nav class="sidebar-nav" id="sidebar-nav"></nav>
+</aside>
+
+<main class="content">
+  <div class="page-header">
+    <h1>Typography</h1>
+    <div class="description">Inter — type scale, weights, and usage</div>
+  </div>
+
+  <section class="page-section">
+    <h2>Font Family</h2>
+    <p>The design system uses <strong>Inter</strong> as its sole typeface. Inter is an open-source variable font designed for screen readability, with excellent legibility at all sizes.</p>
+
+    <div class="weight-sample">
+      <div style="display: flex; gap: var(--space-2); align-items: center;">
+        <span style="font-weight: var(--font-weight-normal); font-size: var(--text-xl);">Aa</span>
+        <span style="font-weight: var(--font-weight-normal); color: var(--color-gray-400); font-size: var(--text-sm);">400 Normal</span>
+      </div>
+      <div style="display: flex; gap: var(--space-2); align-items: center;">
+        <span style="font-weight: var(--font-weight-medium); font-size: var(--text-xl);">Aa</span>
+        <span style="font-weight: var(--font-weight-medium); color: var(--color-gray-400); font-size: var(--text-sm);">500 Medium</span>
+      </div>
+      <div style="display: flex; gap: var(--space-2); align-items: center;">
+        <span style="font-weight: var(--font-weight-semibold); font-size: var(--text-xl);">Aa</span>
+        <span style="font-weight: var(--font-weight-semibold); color: var(--color-gray-400); font-size: var(--text-sm);">600 Semibold</span>
+      </div>
+      <div style="display: flex; gap: var(--space-2); align-items: center;">
+        <span style="font-weight: var(--font-weight-bold); font-size: var(--text-xl);">Aa</span>
+        <span style="font-weight: var(--font-weight-bold); color: var(--color-gray-400); font-size: var(--text-sm);">700 Bold</span>
+      </div>
+    </div>
+
+    <table class="token-table">
+      <thead>
+        <tr><th>Token</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>--font-sans</td><td>"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif</td></tr>
+        <tr><td>--font-mono</td><td>"SF Mono", "Fira Code", "Fira Mono", "Menlo", monospace</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="page-section">
+    <h2>Type Scale</h2>
+    <p>A modular type scale with six steps. Use these tokens instead of hard-coded font sizes.</p>
+
+    <div class="type-scale-item">
+      <div class="label">--text-4xl / 2.25rem (36px)</div>
+      <div class="specimen" style="font-size: var(--text-4xl); font-weight: var(--font-weight-semibold);">The quick brown fox</div>
+    </div>
+    <div class="type-scale-item">
+      <div class="label">--text-3xl / 1.875rem (30px)</div>
+      <div class="specimen" style="font-size: var(--text-3xl); font-weight: var(--font-weight-semibold);">The quick brown fox</div>
+    </div>
+    <div class="type-scale-item">
+      <div class="label">--text-2xl / 1.5rem (24px)</div>
+      <div class="specimen" style="font-size: var(--text-2xl); font-weight: var(--font-weight-semibold);">The quick brown fox</div>
+    </div>
+    <div class="type-scale-item">
+      <div class="label">--text-xl / 1.25rem (20px)</div>
+      <div class="specimen" style="font-size: var(--text-xl); font-weight: var(--font-weight-medium);">The quick brown fox jumps over the lazy dog</div>
+    </div>
+    <div class="type-scale-item">
+      <div class="label">--text-lg / 1.125rem (18px)</div>
+      <div class="specimen" style="font-size: var(--text-lg);">The quick brown fox jumps over the lazy dog</div>
+    </div>
+    <div class="type-scale-item">
+      <div class="label">--text-base / 1rem (16px)</div>
+      <div class="specimen" style="font-size: var(--text-base);">The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.</div>
+    </div>
+    <div class="type-scale-item">
+      <div class="label">--text-sm / 0.875rem (14px)</div>
+      <div class="specimen" style="font-size: var(--text-sm); color: var(--color-gray-600);">The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.</div>
+    </div>
+    <div class="type-scale-item">
+      <div class="label">--text-xs / 0.75rem (12px)</div>
+      <div class="specimen" style="font-size: var(--text-xs); color: var(--color-gray-400);">The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.</div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2>Token Reference</h2>
+    <table class="token-table">
+      <thead>
+        <tr><th>Token</th><th>rem</th><th>px</th><th>Weight</th><th>Used for</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>--text-xs</td><td>0.75</td><td>12</td><td>400</td><td>Labels, metadata, captions</td></tr>
+        <tr><td>--text-sm</td><td>0.875</td><td>14</td><td>400</td><td>Secondary text, descriptions</td></tr>
+        <tr><td>--text-base</td><td>1</td><td>16</td><td>400</td><td>Body copy</td></tr>
+        <tr><td>--text-lg</td><td>1.125</td><td>18</td><td>400</td><td>Larger body, intro text</td></tr>
+        <tr><td>--text-xl</td><td>1.25</td><td>20</td><td>500</td><td>Subheadings</td></tr>
+        <tr><td>--text-2xl</td><td>1.5</td><td>24</td><td>600</td><td>Section headings (h2)</td></tr>
+        <tr><td>--text-3xl</td><td>1.875</td><td>30</td><td>600</td><td>Page headings (h1)</td></tr>
+        <tr><td>--text-4xl</td><td>2.25</td><td>36</td><td>600</td><td>Hero headings</td></tr>
+      </tbody>
+    </table>
+
+    <table class="token-table" style="margin-top: var(--space-4);">
+      <thead>
+        <tr><th>Token</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>--line-height-tight</td><td>1.2</td><td>Headings</td></tr>
+        <tr><td>--line-height-base</td><td>1.5</td><td>Body text</td></tr>
+        <tr><td>--line-height-relaxed</td><td>1.7</td><td>Long-form reading</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<script src="../js/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Design Tokens — Dev · Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/design-tokens.css" />
+<link rel="stylesheet" href="../css/layout.css" />
+<style>
+  .token-category {
+    margin-bottom: var(--space-8);
+  }
+  .token-category h2 {
+    margin-bottom: var(--space-4);
+  }
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Design System</h2>
+    <div class="subtitle">2026 Portfolio</div>
+  </div>
+  <nav class="sidebar-nav" id="sidebar-nav"></nav>
+</aside>
+
+<main class="content">
+  <div class="page-header">
+    <h1>Design Tokens</h1>
+    <div class="description">Full reference of all CSS custom properties used in the system</div>
+  </div>
+
+  <section class="page-section token-category">
+    <h2>Colours</h2>
+    <table class="token-table">
+      <thead><tr><th>Token</th><th>Value</th><th>Swatch</th></tr></thead>
+      <tbody>
+        <tr><td>--color-bg</td><td>#f5f5f3</td><td><span class="token-swatch" style="background:#f5f5f3"></span></td></tr>
+        <tr><td>--color-surface</td><td>#ffffff</td><td><span class="token-swatch" style="background:#ffffff"></span></td></tr>
+        <tr><td>--color-ink</td><td>#2c2c2c</td><td><span class="token-swatch" style="background:#2c2c2c"></span></td></tr>
+        <tr><td>--color-primary</td><td>#2b2b2b</td><td><span class="token-swatch" style="background:#2b2b2b"></span></td></tr>
+        <tr><td>--color-accent</td><td>#4a4a4a</td><td><span class="token-swatch" style="background:#4a4a4a"></span></td></tr>
+        <tr><td>--color-gray-50</td><td>#f8f8f6</td><td><span class="token-swatch" style="background:#f8f8f6"></span></td></tr>
+        <tr><td>--color-gray-100</td><td>#f0f0ed</td><td><span class="token-swatch" style="background:#f0f0ed"></span></td></tr>
+        <tr><td>--color-gray-200</td><td>#e0e0db</td><td><span class="token-swatch" style="background:#e0e0db"></span></td></tr>
+        <tr><td>--color-gray-300</td><td>#c4c4bf</td><td><span class="token-swatch" style="background:#c4c4bf"></span></td></tr>
+        <tr><td>--color-gray-400</td><td>#8a8a86</td><td><span class="token-swatch" style="background:#8a8a86"></span></td></tr>
+        <tr><td>--color-gray-500</td><td>#6b6b67</td><td><span class="token-swatch" style="background:#6b6b67"></span></td></tr>
+        <tr><td>--color-gray-600</td><td>#4f4f4c</td><td><span class="token-swatch" style="background:#4f4f4c"></span></td></tr>
+        <tr><td>--color-gray-700</td><td>#3a3a38</td><td><span class="token-swatch" style="background:#3a3a38"></span></td></tr>
+        <tr><td>--color-gray-800</td><td>#2c2c2a</td><td><span class="token-swatch" style="background:#2c2c2a"></span></td></tr>
+        <tr><td>--color-gray-900</td><td>#1a1a18</td><td><span class="token-swatch" style="background:#1a1a18"></span></td></tr>
+        <tr><td>--color-success</td><td>#2e7d32</td><td><span class="token-swatch" style="background:#2e7d32"></span></td></tr>
+        <tr><td>--color-warning</td><td>#b26a00</td><td><span class="token-swatch" style="background:#b26a00"></span></td></tr>
+        <tr><td>--color-error</td><td>#b71c1c</td><td><span class="token-swatch" style="background:#b71c1c"></span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="page-section token-category">
+    <h2>Typography</h2>
+    <table class="token-table">
+      <thead><tr><th>Token</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>--font-sans</td><td>"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif</td></tr>
+        <tr><td>--font-display</td><td>"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif</td></tr>
+        <tr><td>--font-mono</td><td>"SF Mono", "Fira Code", "Fira Mono", "Menlo", monospace</td></tr>
+        <tr><td>--font-weight-normal</td><td>400</td></tr>
+        <tr><td>--font-weight-medium</td><td>500</td></tr>
+        <tr><td>--font-weight-semibold</td><td>600</td></tr>
+        <tr><td>--font-weight-bold</td><td>700</td></tr>
+        <tr><td>--line-height-tight</td><td>1.2</td></tr>
+        <tr><td>--line-height-base</td><td>1.5</td></tr>
+        <tr><td>--line-height-relaxed</td><td>1.7</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="page-section token-category">
+    <h2>Font Size Scale</h2>
+    <table class="token-table">
+      <thead><tr><th>Token</th><th>rem</th><th>px</th></tr></thead>
+      <tbody>
+        <tr><td>--text-xs</td><td>0.75</td><td>12</td></tr>
+        <tr><td>--text-sm</td><td>0.875</td><td>14</td></tr>
+        <tr><td>--text-base</td><td>1</td><td>16</td></tr>
+        <tr><td>--text-lg</td><td>1.125</td><td>18</td></tr>
+        <tr><td>--text-xl</td><td>1.25</td><td>20</td></tr>
+        <tr><td>--text-2xl</td><td>1.5</td><td>24</td></tr>
+        <tr><td>--text-3xl</td><td>1.875</td><td>30</td></tr>
+        <tr><td>--text-4xl</td><td>2.25</td><td>36</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="page-section token-category">
+    <h2>Spacing</h2>
+    <table class="token-table">
+      <thead><tr><th>Token</th><th>rem</th><th>px</th></tr></thead>
+      <tbody>
+        <tr><td>--space-1</td><td>0.25</td><td>4</td></tr>
+        <tr><td>--space-2</td><td>0.5</td><td>8</td></tr>
+        <tr><td>--space-3</td><td>0.75</td><td>12</td></tr>
+        <tr><td>--space-4</td><td>1</td><td>16</td></tr>
+        <tr><td>--space-6</td><td>1.5</td><td>24</td></tr>
+        <tr><td>--space-8</td><td>2</td><td>32</td></tr>
+        <tr><td>--space-12</td><td>3</td><td>48</td></tr>
+        <tr><td>--space-16</td><td>4</td><td>64</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="page-section token-category">
+    <h2>Radii</h2>
+    <table class="token-table">
+      <thead><tr><th>Token</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>--radius-sm</td><td>6px</td></tr>
+        <tr><td>--radius-md</td><td>12px</td></tr>
+        <tr><td>--radius-lg</td><td>20px</td></tr>
+        <tr><td>--radius-full</td><td>999px</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="page-section token-category">
+    <h2>Shadows</h2>
+    <table class="token-table">
+      <thead><tr><th>Token</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>--shadow-sm</td><td>0 1px 1.5px rgba(44,44,44,0.14)</td></tr>
+        <tr><td>--shadow-md</td><td>0 2px 4px rgba(44,44,44,0.1)</td></tr>
+        <tr><td>--shadow-lg</td><td>0 4px 12px rgba(44,44,44,0.1)</td></tr>
+        <tr><td>--shadow-xl</td><td>0 8px 24px rgba(44,44,44,0.1)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="page-section token-category">
+    <h2>Transitions</h2>
+    <table class="token-table">
+      <thead><tr><th>Token</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>--transition-fast</td><td>120ms ease</td></tr>
+        <tr><td>--transition-base</td><td>140ms ease</td></tr>
+        <tr><td>--transition-slow</td><td>250ms ease</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="page-section token-category">
+    <h2>Layout</h2>
+    <table class="token-table">
+      <thead><tr><th>Token</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>--sidebar-width</td><td>260px</td></tr>
+        <tr><td>--content-max-width</td><td>960px</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<script src="../js/docs.js"></script>
+</body>
+</html>

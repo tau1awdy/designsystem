@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Colours — Brand · Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/design-tokens.css" />
+<link rel="stylesheet" href="../css/layout.css" />
+<style>
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .swatch-card {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-gray-200);
+    background: var(--color-surface);
+  }
+
+  .swatch-card .swatch {
+    height: 80px;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-2);
+  }
+
+  .swatch-card .swatch-label {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+  }
+
+  .swatch-card .swatch-label .name {
+    font-family: var(--font-mono);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .swatch-card .swatch-label .value {
+    color: var(--color-gray-400);
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Design System</h2>
+    <div class="subtitle">2026 Portfolio</div>
+  </div>
+  <nav class="sidebar-nav" id="sidebar-nav"></nav>
+</aside>
+
+<main class="content">
+  <div class="page-header">
+    <h1>Colours</h1>
+    <div class="description">Brand palette, neutral scale, and semantic colours</div>
+  </div>
+
+  <section class="page-section">
+    <h2>Brand Colours</h2>
+    <p>The primary palette defines the core identity. Use these colours for key UI elements and brand moments.</p>
+
+    <div class="swatch-grid">
+      <div class="swatch-card">
+        <div class="swatch" style="background: #f5f5f3;"></div>
+        <div class="swatch-label">
+          <div class="name">--color-bg</div>
+          <div class="value">#f5f5f3</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #ffffff; border-bottom: 1px solid var(--color-gray-200);"></div>
+        <div class="swatch-label">
+          <div class="name">--color-surface</div>
+          <div class="value">#ffffff</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #2c2c2c;"></div>
+        <div class="swatch-label" style="color: #fff; background: #2c2c2c;">
+          <div class="name" style="color: #fff;">--color-ink</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#2c2c2c</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #2b2b2b;"></div>
+        <div class="swatch-label" style="color: #fff; background: #2b2b2b;">
+          <div class="name" style="color: #fff;">--color-primary</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#2b2b2b</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #4a4a4a;"></div>
+        <div class="swatch-label" style="color: #fff; background: #4a4a4a;">
+          <div class="name" style="color: #fff;">--color-accent</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#4a4a4a</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2>Neutral Scale</h2>
+    <p>A ten-step neutral scale for backgrounds, borders, text, and structural elements.</p>
+
+    <div class="swatch-grid">
+      <div class="swatch-card">
+        <div class="swatch" style="background: #f8f8f6;"></div>
+        <div class="swatch-label">
+          <div class="name">--color-gray-50</div>
+          <div class="value">#f8f8f6</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #f0f0ed;"></div>
+        <div class="swatch-label">
+          <div class="name">--color-gray-100</div>
+          <div class="value">#f0f0ed</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #e0e0db;"></div>
+        <div class="swatch-label">
+          <div class="name">--color-gray-200</div>
+          <div class="value">#e0e0db</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #c4c4bf;"></div>
+        <div class="swatch-label">
+          <div class="name">--color-gray-300</div>
+          <div class="value">#c4c4bf</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #8a8a86;"></div>
+        <div class="swatch-label" style="color: #fff; background: #8a8a86;">
+          <div class="name" style="color: #fff;">--color-gray-400</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#8a8a86</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #6b6b67;"></div>
+        <div class="swatch-label" style="color: #fff; background: #6b6b67;">
+          <div class="name" style="color: #fff;">--color-gray-500</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#6b6b67</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #4f4f4c;"></div>
+        <div class="swatch-label" style="color: #fff; background: #4f4f4c;">
+          <div class="name" style="color: #fff;">--color-gray-600</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#4f4f4c</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #3a3a38;"></div>
+        <div class="swatch-label" style="color: #fff; background: #3a3a38;">
+          <div class="name" style="color: #fff;">--color-gray-700</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#3a3a38</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #2c2c2a;"></div>
+        <div class="swatch-label" style="color: #fff; background: #2c2c2a;">
+          <div class="name" style="color: #fff;">--color-gray-800</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#2c2c2a</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #1a1a18;"></div>
+        <div class="swatch-label" style="color: #fff; background: #1a1a18;">
+          <div class="name" style="color: #fff;">--color-gray-900</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#1a1a18</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2>Semantic Colours</h2>
+    <p>Used for status indicators, validation, and feedback. Use sparingly to maintain brand cohesion.</p>
+
+    <div class="swatch-grid">
+      <div class="swatch-card">
+        <div class="swatch" style="background: #e8f5e9;"></div>
+        <div class="swatch-label">
+          <div class="name">--color-success</div>
+          <div class="value">#2e7d32</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #fff3e0;"></div>
+        <div class="swatch-label">
+          <div class="name">--color-warning</div>
+          <div class="value">#b26a00</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #fce4ec;"></div>
+        <div class="swatch-label">
+          <div class="name">--color-error</div>
+          <div class="value">#b71c1c</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2>Colour Token Reference</h2>
+    <table class="token-table">
+      <thead>
+        <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>--color-bg</td><td>#f5f5f3</td><td>Page background</td></tr>
+        <tr><td>--color-surface</td><td>#ffffff</td><td>Card, component surface</td></tr>
+        <tr><td>--color-ink</td><td>#2c2c2c</td><td>Primary text</td></tr>
+        <tr><td>--color-primary</td><td>#2b2b2b</td><td>Interactive elements, shader base</td></tr>
+        <tr><td>--color-accent</td><td>#4a4a4a</td><td>Secondary emphasis</td></tr>
+        <tr><td>--color-gray-400</td><td>#8a8a86</td><td>Muted text, metadata</td></tr>
+        <tr><td>--color-gray-200</td><td>#e0e0db</td><td>Borders, dividers</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<script src="../js/docs.js"></script>
+</body>
+</html>

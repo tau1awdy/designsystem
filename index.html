@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Design System — 2026 Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/design-tokens.css" />
+<link rel="stylesheet" href="css/layout.css" />
+<style>
+  .hero {
+    margin-bottom: var(--space-12);
+  }
+  .hero h1 {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-3);
+  }
+  .hero .tagline {
+    font-size: var(--text-lg);
+    color: var(--color-gray-400);
+    max-width: 480px;
+  }
+  .section-group {
+    margin-bottom: var(--space-8);
+  }
+  .section-group h2 {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-gray-400);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-4);
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-3);
+  }
+  .card {
+    display: block;
+    background: var(--color-surface);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    transition: border-color var(--transition-fast), transform var(--transition-fast);
+  }
+  .card:hover {
+    border-color: var(--color-gray-400);
+    transform: translateY(-2px);
+  }
+  .card h3 {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 var(--space-1) 0;
+  }
+  .card p {
+    font-size: var(--text-xs);
+    color: var(--color-gray-400);
+    margin: 0;
+    line-height: var(--line-height-base);
+  }
+  .empty-card {
+    background: transparent;
+    border: 1px dashed var(--color-gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    color: var(--color-gray-300);
+    font-size: var(--text-xs);
+    border-radius: var(--radius-md);
+  }
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Design System</h2>
+    <div class="subtitle">2026 Portfolio</div>
+  </div>
+  <nav class="sidebar-nav" id="sidebar-nav"></nav>
+</aside>
+
+<main class="content">
+  <div class="hero">
+    <h1>Design System</h1>
+    <div class="tagline">A living component library for the 2026 portfolio — brand identity, atoms, molecules, organisms, and technical reference.</div>
+  </div>
+
+  <div class="section-group">
+    <h2>Brand</h2>
+    <div class="card-grid">
+      <a href="brand/logo.html" class="card">
+        <h3>Logo</h3>
+        <p>Brand mark, clear space, minimum size, and usage rules</p>
+      </a>
+      <a href="brand/colours.html" class="card">
+        <h3>Colours</h3>
+        <p>Full palette — brand, neutral scale, semantic colours</p>
+      </a>
+      <a href="brand/typography.html" class="card">
+        <h3>Typography</h3>
+        <p>Inter typeface, scale, weights, and line heights</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="section-group">
+    <h2>Atoms</h2>
+    <div class="card-grid">
+      <a href="atoms/button.html" class="card">
+        <h3>Button</h3>
+        <p>Animated dithering button with WebGL shader</p>
+      </a>
+      <a href="atoms/link.html" class="card">
+        <h3>Link</h3>
+        <p>Inline text link with underline transition</p>
+      </a>
+      <a href="atoms/badge.html" class="card">
+        <h3>Badge</h3>
+        <p>Status labels — neutral, success, warning, error</p>
+      </a>
+      <a href="atoms/input.html" class="card">
+        <h3>Input</h3>
+        <p>Text input with focus ring</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="section-group">
+    <h2>Molecules</h2>
+    <div class="card-grid">
+      <div class="empty-card">Coming soon</div>
+    </div>
+  </div>
+
+  <div class="section-group">
+    <h2>Organisms</h2>
+    <div class="card-grid">
+      <div class="empty-card">Coming soon</div>
+    </div>
+  </div>
+
+  <div class="section-group">
+    <h2>Templates &amp; Pages</h2>
+    <div class="card-grid">
+      <div class="empty-card">Coming soon</div>
+    </div>
+  </div>
+
+  <div class="section-group">
+    <h2>Dev</h2>
+    <div class="card-grid">
+      <a href="dev/tokens.html" class="card">
+        <h3>Design Tokens</h3>
+        <p>Full CSS custom properties reference</p>
+      </a>
+      <a href="dev/setup.html" class="card">
+        <h3>Setup</h3>
+        <p>Quick installation guide</p>
+      </a>
+      <a href="dev/changelog.html" class="card">
+        <h3>Changelog</h3>
+        <p>Version history &amp; updates</p>
+      </a>
+    </div>
+  </div>
+</main>
+
+<script src="js/docs.js"></script>
+</body>
+</html>

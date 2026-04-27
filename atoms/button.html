@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Button — Atoms · Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/design-tokens.css" />
+<link rel="stylesheet" href="../css/layout.css" />
+<link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">☰</button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>Design System</h2>
+    <div class="subtitle">2026 Portfolio</div>
+  </div>
+  <nav class="sidebar-nav" id="sidebar-nav"></nav>
+</aside>
+
+<main class="content">
+  <div class="page-header">
+    <h1>Button</h1>
+    <div class="description">Animated dithering button with WebGL shader — primary call-to-action</div>
+  </div>
+
+  <section class="page-section">
+    <h2>Variants</h2>
+    <p>Three size variants: default, large (<code>.lg</code>), and extra-large (<code>.xl</code>). Each features the animated dithering border ring with a noise texture overlay.</p>
+
+    <div class="component-preview">
+      <div class="variant-label">Default</div>
+      <button class="dither-btn" type="button" data-shader>
+        <span class="shader-host"><canvas></canvas></span>
+        <span class="noise"></span>
+        <span class="face">View Project</span>
+      </button>
+
+      <button class="dither-btn" type="button" data-shader>
+        <span class="shader-host"><canvas></canvas></span>
+        <span class="noise"></span>
+        <span class="face">Get in Touch</span>
+      </button>
+    </div>
+
+    <div class="code-block">
+      <button class="copy-btn">Copy</button>
+      <pre><code>&lt;button class="dither-btn" type="button" data-shader&gt;
+  &lt;span class="shader-host"&gt;&lt;canvas&gt;&lt;/canvas&gt;&lt;/span&gt;
+  &lt;span class="noise"&gt;&lt;/span&gt;
+  &lt;span class="face"&gt;Label&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+    </div>
+
+    <div class="component-preview">
+      <div class="variant-label">Large (.lg)</div>
+      <button class="dither-btn lg" type="button" data-shader>
+        <span class="shader-host"><canvas></canvas></span>
+        <span class="noise"></span>
+        <span class="face">Download CV</span>
+      </button>
+    </div>
+
+    <div class="code-block">
+      <button class="copy-btn">Copy</button>
+      <pre><code>&lt;button class="dither-btn lg" type="button" data-shader&gt;
+  &lt;span class="shader-host"&gt;&lt;canvas&gt;&lt;/canvas&gt;&lt;/span&gt;
+  &lt;span class="noise"&gt;&lt;/span&gt;
+  &lt;span class="face"&gt;Label&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+    </div>
+
+    <div class="component-preview">
+      <div class="variant-label">Extra Large (.xl)</div>
+      <button class="dither-btn xl" type="button" data-shader>
+        <span class="shader-host"><canvas></canvas></span>
+        <span class="noise"></span>
+        <span class="face">Experience</span>
+      </button>
+    </div>
+
+    <div class="code-block">
+      <button class="copy-btn">Copy</button>
+      <pre><code>&lt;button class="dither-btn xl" type="button" data-shader&gt;
+  &lt;span class="shader-host"&gt;&lt;canvas&gt;&lt;/canvas&gt;&lt;/span&gt;
+  &lt;span class="noise"&gt;&lt;/span&gt;
+  &lt;span class="face"&gt;Label&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2>States</h2>
+
+    <div class="component-preview" style="flex-direction: row; flex-wrap: wrap;">
+      <div style="text-align: center;">
+        <div class="variant-label">Default</div>
+        <button class="dither-btn" type="button" style="pointer-events: none;">
+          <span class="shader-host"><canvas></canvas></span>
+          <span class="noise"></span>
+          <span class="face">Default</span>
+        </button>
+      </div>
+
+      <div style="text-align: center;">
+        <div class="variant-label">Hover</div>
+        <button class="dither-btn" type="button" style="pointer-events: none;">
+          <span class="shader-host"><canvas></canvas></span>
+          <span class="noise"></span>
+          <span class="face" style="margin: 7px; font-weight: 700;">Hover</span>
+        </button>
+      </div>
+
+      <div style="text-align: center;">
+        <div class="variant-label">Active</div>
+        <button class="dither-btn" type="button" style="pointer-events: none; transform: translateY(1px);">
+          <span class="shader-host"><canvas></canvas></span>
+          <span class="noise"></span>
+          <span class="face">Active</span>
+        </button>
+      </div>
+
+      <div style="text-align: center;">
+        <div class="variant-label">Focus</div>
+        <button class="dither-btn" type="button" style="pointer-events: none; outline: 2px solid #2C2C2C; outline-offset: 4px;">
+          <span class="shader-host"><canvas></canvas></span>
+          <span class="noise"></span>
+          <span class="face">Focus</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2>Structure</h2>
+    <p>The button is composed of three internal elements:</p>
+    <table class="token-table">
+      <thead>
+        <tr><th>Element</th><th>Role</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>.shader-host &gt; canvas</code></td><td>WebGL canvas rendering the Bayer 4x4 dithering sphere animation</td></tr>
+        <tr><td><code>.noise</code></td><td>SVG fractal noise overlay (black 23%, white 11%) for paper texture</td></tr>
+        <tr><td><code>.face</code></td><td>Inner pill with inset shadow — the interactive label surface</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<script>
+(() => {
+  const VERT = `
+    attribute vec2 a_pos;
+    varying vec2 v_uv;
+    void main() {
+      v_uv = a_pos * 0.5 + 0.5;
+      gl_Position = vec4(a_pos, 0.0, 1.0);
+    }
+  `;
+
+  const FRAG = `
+    precision highp float;
+    varying vec2 v_uv;
+    uniform vec2 u_resolution;
+    uniform float u_time;
+    uniform vec3 u_colorBack;
+    uniform vec3 u_colorFront;
+    uniform float u_size;
+    uniform float u_scale;
+    uniform float u_offsetY;
+    uniform float u_aspect;
+
+    float bayer4(vec2 p) {
+      int x = int(mod(p.x, 4.0));
+      int y = int(mod(p.y, 4.0));
+      int idx = x + y * 4;
+      float v = 0.0;
+      if (idx == 0)  v =  0.0;
+      else if (idx == 1)  v =  8.0;
+      else if (idx == 2)  v =  2.0;
+      else if (idx == 3)  v = 10.0;
+      else if (idx == 4)  v = 12.0;
+      else if (idx == 5)  v =  4.0;
+      else if (idx == 6)  v = 14.0;
+      else if (idx == 7)  v =  6.0;
+      else if (idx == 8)  v =  3.0;
+      else if (idx == 9)  v = 11.0;
+      else if (idx == 10) v =  1.0;
+      else if (idx == 11) v =  9.0;
+      else if (idx == 12) v = 15.0;
+      else if (idx == 13) v =  7.0;
+      else if (idx == 14) v = 13.0;
+      else                v =  5.0;
+      return (v + 0.5) / 16.0;
+    }
+
+    void main() {
+      vec2 px = gl_FragCoord.xy;
+      vec2 blockPx = floor(px / u_size) * u_size + 0.5 * u_size;
+      vec2 blockUV = blockPx / u_resolution;
+      vec2 uv = (blockUV - 0.5);
+      uv.x *= u_aspect;
+      uv /= u_scale;
+      float t = u_time * 0.5;
+      uv.x += sin(t * 0.7) * 0.35;
+      uv.y += cos(t * 0.9) * 0.25 + u_offsetY;
+      float r = length(uv);
+      float sphereMask = step(r, 1.0);
+      float z = sqrt(max(0.0, 1.0 - r * r));
+      vec3 n = vec3(uv, z);
+      vec3 light = normalize(vec3(sin(t * 1.1), cos(t * 0.8), 0.7));
+      float lambert = max(0.0, dot(n, light));
+      float intensity = lambert * sphereMask;
+      intensity = clamp(intensity * 1.35, 0.0, 1.0);
+      vec2 block = floor(px / u_size);
+      float threshold = bayer4(block);
+      float bit = step(threshold, intensity);
+      vec3 col = mix(u_colorBack, u_colorFront, bit);
+      gl_FragColor = vec4(col, 1.0);
+    }
+  `;
+
+  function compile(gl, type, src) {
+    const sh = gl.createShader(type);
+    gl.shaderSource(sh, src);
+    gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+      console.error('shader error', gl.getShaderInfoLog(sh));
+      gl.deleteShader(sh);
+      return null;
+    }
+    return sh;
+  }
+
+  function makeProgram(gl) {
+    const vs = compile(gl, gl.VERTEX_SHADER, VERT);
+    const fs = compile(gl, gl.FRAGMENT_SHADER, FRAG);
+    if (!vs || !fs) return null;
+    const p = gl.createProgram();
+    gl.attachShader(p, vs);
+    gl.attachShader(p, fs);
+    gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) {
+      console.error('link error', gl.getProgramInfoLog(p));
+      return null;
+    }
+    return p;
+  }
+
+  function setupCanvas(canvas) {
+    const gl = canvas.getContext('webgl', { antialias: false, premultipliedAlpha: false });
+    if (!gl) return null;
+    const program = makeProgram(gl);
+    if (!program) return null;
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+      -1, -1,  1, -1,  -1, 1,
+      -1,  1,  1, -1,   1, 1,
+    ]), gl.STATIC_DRAW);
+    const aPos = gl.getAttribLocation(program, 'a_pos');
+    const uRes = gl.getUniformLocation(program, 'u_resolution');
+    const uTime = gl.getUniformLocation(program, 'u_time');
+    const uBack = gl.getUniformLocation(program, 'u_colorBack');
+    const uFront = gl.getUniformLocation(program, 'u_colorFront');
+    const uSize = gl.getUniformLocation(program, 'u_size');
+    const uScale = gl.getUniformLocation(program, 'u_scale');
+    const uOffY = gl.getUniformLocation(program, 'u_offsetY');
+    const uAspect = gl.getUniformLocation(program, 'u_aspect');
+    return { gl, program, buf, aPos, uRes, uTime, uBack, uFront, uSize, uScale, uOffY, uAspect };
+  }
+
+  function hexRGB(hex) {
+    const n = parseInt(hex.slice(1), 16);
+    return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
+  }
+
+  const PARAMS = {
+    colorBack: hexRGB('#2b2b2b'),
+    colorFront: hexRGB('#ffffff'),
+    size: 7,
+    scale: 2.28,
+    offsetY: -0.06,
+  };
+
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const ctxs = [];
+
+  document.querySelectorAll('[data-shader] canvas').forEach((canvas) => {
+    const ctx = setupCanvas(canvas);
+    if (!ctx) return;
+    ctxs.push({ canvas, ...ctx });
+  });
+
+  function resize() {
+    for (const c of ctxs) {
+      const rect = c.canvas.getBoundingClientRect();
+      const w = Math.max(2, Math.round(rect.width * dpr));
+      const h = Math.max(2, Math.round(rect.height * dpr));
+      if (c.canvas.width !== w || c.canvas.height !== h) {
+        c.canvas.width = w;
+        c.canvas.height = h;
+      }
+    }
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const t0 = performance.now();
+  function frame() {
+    const t = (performance.now() - t0) / 1000;
+    for (const c of ctxs) {
+      const { gl, program } = c;
+      gl.viewport(0, 0, c.canvas.width, c.canvas.height);
+      gl.useProgram(program);
+      gl.bindBuffer(gl.ARRAY_BUFFER, c.buf);
+      gl.enableVertexAttribArray(c.aPos);
+      gl.vertexAttribPointer(c.aPos, 2, gl.FLOAT, false, 0, 0);
+      gl.uniform2f(c.uRes, c.canvas.width, c.canvas.height);
+      gl.uniform1f(c.uTime, t);
+      gl.uniform3f(c.uBack, ...PARAMS.colorBack);
+      gl.uniform3f(c.uFront, ...PARAMS.colorFront);
+      gl.uniform1f(c.uSize, PARAMS.size);
+      gl.uniform1f(c.uScale, PARAMS.scale);
+      gl.uniform1f(c.uOffY, PARAMS.offsetY);
+      gl.uniform1f(c.uAspect, c.canvas.width / c.canvas.height);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+    }
+    requestAnimationFrame(frame);
+  }
+  if (ctxs.length) requestAnimationFrame(frame);
+})();
+</script>
+<script src="../js/docs.js"></script>
+</body>
+</html>
