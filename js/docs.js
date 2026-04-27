@@ -85,7 +85,7 @@ function buildSidebar() {
       const isOpen = childrenWithHref.some(c => location.pathname.includes(c.href));
       html += `<div class="nav-section-header" data-section="${section.id}">
         <span>${section.label}</span>
-        <span class="arrow ${isOpen ? 'open' : ''}">›</span>
+        <span class="arrow">${isOpen ? '▴' : '▾'}</span>
       </div>`;
       html += `<ul class="nav-children ${isOpen ? '' : 'collapsed'}" id="nav-${section.id}">`;
       for (const child of childrenWithHref) {
@@ -116,7 +116,8 @@ function buildSidebar() {
 
     header.addEventListener('click', () => {
       const isCollapsed = children.classList.toggle('collapsed');
-      header.querySelector('.arrow').classList.toggle('open');
+      const arrow = header.querySelector('.arrow');
+      arrow.textContent = isCollapsed ? '▾' : '▴';
     });
   });
 }

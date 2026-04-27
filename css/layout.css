@@ -150,13 +150,14 @@ li { margin-bottom: var(--space-1); }
 }
 
 .nav-section-header .arrow {
-  font-size: 10px;
-  transition: transform var(--transition-fast);
+  font-size: 8px;
+  transition: none;
   color: var(--color-gray-300);
+  line-height: 1;
 }
 
-.nav-section-header .arrow.open {
-  transform: rotate(90deg);
+.nav-section-header:hover .arrow {
+  color: var(--color-gray-500);
 }
 
 .nav-children {
