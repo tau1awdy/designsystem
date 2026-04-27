@@ -23,13 +23,20 @@ html, body {
   text-rendering: geometricPrecision;
 }
 
-.page-wrapper {
+.page-border {
   position: fixed;
   top: 20px;
   left: 20px;
   right: 20px;
   bottom: 20px;
   border-radius: var(--radius-md);
+  filter: drop-shadow(0 1px 1.5px rgba(44,44,44,0.14));
+}
+
+.page-wrapper {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
   overflow: hidden;
 }
 
@@ -54,7 +61,7 @@ html, body {
   border-radius: inherit;
   z-index: 1;
   pointer-events: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.16'/><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23w)' opacity='0.08'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.23'/><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='2' stitchTiles='stitch' seed='3'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23w)' opacity='0.11'/></svg>");
   background-size: 80px 80px;
   mix-blend-mode: normal;
 }
@@ -71,9 +78,13 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: var(--space-6);
-  padding: var(--space-8) var(--space-8) calc(var(--space-8) + 20px);
+  padding: var(--space-8) var(--space-8) calc(var(--space-8) + 12px);
   box-sizing: border-box;
   text-align: center;
+  box-shadow:
+    inset 0 2px 3px rgba(44,44,44,0.22),
+    inset 0 3px 6px -2px rgba(44,44,44,0.10),
+    inset 0 -1px 2px rgba(255,255,255,0.30);
 }
 
 .page-logo {
@@ -99,17 +110,17 @@ html, body {
 }
 
 .page-hero h1 {
-  font-size: clamp(28pt, 5vw, 48pt);
+  font-size: clamp(24pt, 5vw, 44pt);
   font-weight: var(--font-weight-semibold);
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin: 0;
-  max-width: 860px;
+  max-width: 800px;
   color: var(--color-ink);
 }
 
 .page-hero .subtitle {
-  font-size: clamp(16pt, 2.2vw, 28pt);
+  font-size: clamp(14pt, 2.2vw, 24pt);
   font-weight: var(--font-weight-medium);
   color: var(--color-gray-400);
   margin: 0;
@@ -117,19 +128,23 @@ html, body {
 }
 
 .page-actions {
-  display: flex;
-  max-width: 820px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
   gap: var(--space-3);
-  flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 10px;
 }
 
-.page-actions .dither-btn-wrapper:nth-child(3) ~ .dither-btn-wrapper {
-  margin-top: -6px;
+.page-actions > :nth-child(4) {
+  grid-column: 2;
+}
+
+.page-actions > :nth-child(5) {
+  grid-column: 3;
 }
 
 @media (max-width: 768px) {
-  .page-wrapper {
+  .page-border {
     top: 16px;
     left: 16px;
     right: 16px;
@@ -144,26 +159,31 @@ html, body {
   }
 
   .page-hero h1 {
-    font-size: 24pt;
+    font-size: 20pt;
   }
 
   .page-hero .subtitle {
-    font-size: 14pt;
+    font-size: 12pt;
   }
 
   .page-actions {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
+    padding-bottom: 0;
   }
 
-  .page-actions .dither-btn-wrapper:nth-child(3) ~ .dither-btn-wrapper {
-    margin-top: 0;
+  .page-actions > :nth-child(4) {
+    grid-column: auto;
+  }
+
+  .page-actions > :nth-child(5) {
+    grid-column: auto;
   }
 }
 </style>
 </head>
 <body>
 
+<div class="page-border">
 <div class="page-wrapper">
   <div class="page-shader-host"><canvas id="border-canvas"></canvas></div>
   <div class="page-noise"></div>
@@ -208,6 +228,7 @@ html, body {
       </button></div>
     </div>
   </div>
+</div>
 </div>
 
 <script>
@@ -340,7 +361,7 @@ html, body {
   const PARAMS = {
     colorBack: hexRGB('#2c2c2c'),
     colorFront: hexRGB('#ffffff'),
-    size: 2.2,
+    size: 7,
     scale: 1.5,
     speed: 0.3,
     offsetX: 0.5,
