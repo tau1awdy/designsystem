@@ -67,10 +67,95 @@
   </div>
 
   <section class="page-section">
-    <h2>Brand Colours</h2>
-    <p>The primary palette defines the core identity. Use these colours for key UI elements and brand moments.</p>
+    <h2>Back Stage — Base Palette</h2>
+    <p>Core brand colours from Figma. These are the raw building blocks used across the system.</p>
 
     <div class="swatch-grid">
+      <div class="swatch-card">
+        <div class="swatch" style="background: #2c2c2c;"></div>
+        <div class="swatch-label" style="color: #fff; background: #2c2c2c;">
+          <div class="name" style="color: #fff;">--color-black</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#2c2c2c</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #ffffff; border-bottom: 1px solid var(--color-gray-200);"></div>
+        <div class="swatch-label">
+          <div class="name">--color-white</div>
+          <div class="value">#ffffff</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #2c3341;"></div>
+        <div class="swatch-label" style="color: #fff; background: #2c3341;">
+          <div class="name" style="color: #fff;">--color-brain-blue</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#2c3341</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #a2c4ff;"></div>
+        <div class="swatch-label">
+          <div class="name">--color-brain-aqua</div>
+          <div class="value">#a2c4ff</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #490d1a;"></div>
+        <div class="swatch-label" style="color: #fff; background: #490d1a;">
+          <div class="name" style="color: #fff;">--color-pretty-maroon</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#490d1a</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #ff3d7b;"></div>
+        <div class="swatch-label" style="color: #fff; background: #ff3d7b;">
+          <div class="name" style="color: #fff;">--color-pretty-pink</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#ff3d7b</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #2f412c;"></div>
+        <div class="swatch-label" style="color: #fff; background: #2f412c;">
+          <div class="name" style="color: #fff;">--color-other-green</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#2f412c</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #b2ff54;"></div>
+        <div class="swatch-label">
+          <div class="name">--color-other-lime</div>
+          <div class="value">#b2ff54</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #44212a;"></div>
+        <div class="swatch-label" style="color: #fff; background: #44212a;">
+          <div class="name" style="color: #fff;">--color-secondary-dark</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#44212a</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2>Front Stage — Semantic Tokens</h2>
+    <p>Usage-mapped colours from Figma's Front Stage mode. These reference the base palette and are the preferred tokens for UI work.</p>
+
+    <div class="swatch-grid">
+      <div class="swatch-card">
+        <div class="swatch" style="background: #2c2c2c;"></div>
+        <div class="swatch-label" style="color: #fff; background: #2c2c2c;">
+          <div class="name" style="color: #fff;">--color-primary</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#2c2c2c</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #ffffff; border-bottom: 1px solid var(--color-gray-200);"></div>
+        <div class="swatch-label">
+          <div class="name">--color-surface / white</div>
+          <div class="value">#ffffff</div>
+        </div>
+      </div>
       <div class="swatch-card">
         <div class="swatch" style="background: #f5f5f3;"></div>
         <div class="swatch-label">
@@ -79,31 +164,52 @@
         </div>
       </div>
       <div class="swatch-card">
-        <div class="swatch" style="background: #ffffff; border-bottom: 1px solid var(--color-gray-200);"></div>
+        <div class="swatch" style="background: #2c3341;"></div>
+        <div class="swatch-label" style="color: #fff; background: #2c3341;">
+          <div class="name" style="color: #fff;">--color-main-text / brain primary</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#2c3341</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: #a2c4ff;"></div>
         <div class="swatch-label">
-          <div class="name">--color-surface</div>
-          <div class="value">#ffffff</div>
+          <div class="name">--color-brain-secondary</div>
+          <div class="value">#a2c4ff</div>
         </div>
       </div>
       <div class="swatch-card">
-        <div class="swatch" style="background: #2c2c2c;"></div>
-        <div class="swatch-label" style="color: #fff; background: #2c2c2c;">
-          <div class="name" style="color: #fff;">--color-ink</div>
-          <div class="value" style="color: rgba(255,255,255,0.5);">#2c2c2c</div>
+        <div class="swatch" style="background: #490d1a;"></div>
+        <div class="swatch-label" style="color: #fff; background: #490d1a;">
+          <div class="name" style="color: #fff;">--color-pretty-primary</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#490d1a</div>
         </div>
       </div>
       <div class="swatch-card">
-        <div class="swatch" style="background: #2b2b2b;"></div>
-        <div class="swatch-label" style="color: #fff; background: #2b2b2b;">
-          <div class="name" style="color: #fff;">--color-primary</div>
-          <div class="value" style="color: rgba(255,255,255,0.5);">#2b2b2b</div>
+        <div class="swatch" style="background: #ff3d7b;"></div>
+        <div class="swatch-label" style="color: #fff; background: #ff3d7b;">
+          <div class="name" style="color: #fff;">--color-pretty-secondary</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">#ff3d7b</div>
         </div>
       </div>
       <div class="swatch-card">
-        <div class="swatch" style="background: #4a4a4a;"></div>
-        <div class="swatch-label" style="color: #fff; background: #4a4a4a;">
-          <div class="name" style="color: #fff;">--color-accent</div>
-          <div class="value" style="color: rgba(255,255,255,0.5);">#4a4a4a</div>
+        <div class="swatch" style="background: rgba(59,59,59,0.05);"></div>
+        <div class="swatch-label">
+          <div class="name">--color-bg-grey</div>
+          <div class="value">rgba(59,59,59,0.05)</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: rgba(59,59,59,0.1);"></div>
+        <div class="swatch-label">
+          <div class="name">--color-hover-overlay</div>
+          <div class="value">rgba(59,59,59,0.1)</div>
+        </div>
+      </div>
+      <div class="swatch-card">
+        <div class="swatch" style="background: rgba(59,59,59,0.5);"></div>
+        <div class="swatch-label" style="color: #fff; background: rgba(59,59,59,0.5);">
+          <div class="name" style="color: #fff;">--color-light-text</div>
+          <div class="value" style="color: rgba(255,255,255,0.5);">rgba(59,59,59,0.5)</div>
         </div>
       </div>
     </div>
@@ -220,16 +326,23 @@
     <h2>Colour Token Reference</h2>
     <table class="token-table">
       <thead>
-        <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+        <tr><th>Token</th><th>Value</th><th>Source</th></tr>
       </thead>
       <tbody>
+        <tr><td>--color-primary</td><td>#2c2c2c</td><td>Front Stage · Primary Color / My Black</td></tr>
         <tr><td>--color-bg</td><td>#f5f5f3</td><td>Page background</td></tr>
-        <tr><td>--color-surface</td><td>#ffffff</td><td>Card, component surface</td></tr>
-        <tr><td>--color-ink</td><td>#2c2c2c</td><td>Primary text</td></tr>
-        <tr><td>--color-primary</td><td>#2b2b2b</td><td>Interactive elements, shader base</td></tr>
-        <tr><td>--color-accent</td><td>#4a4a4a</td><td>Secondary emphasis</td></tr>
-        <tr><td>--color-gray-400</td><td>#8a8a86</td><td>Muted text, metadata</td></tr>
-        <tr><td>--color-gray-200</td><td>#e0e0db</td><td>Borders, dividers</td></tr>
+        <tr><td>--color-surface</td><td>#ffffff</td><td>White / card surface</td></tr>
+        <tr><td>--color-ink</td><td>#2c2c2c</td><td>Primary text alias</td></tr>
+        <tr><td>--color-brain-blue</td><td>#2c3341</td><td>Brain Primary / Main Text</td></tr>
+        <tr><td>--color-brain-aqua</td><td>#a2c4ff</td><td>Brain Secondary</td></tr>
+        <tr><td>--color-pretty-maroon</td><td>#490d1a</td><td>Pretty Primary</td></tr>
+        <tr><td>--color-pretty-pink</td><td>#ff3d7b</td><td>Pretty Secondary</td></tr>
+        <tr><td>--color-other-green</td><td>#2f412c</td><td>Back Stage</td></tr>
+        <tr><td>--color-other-lime</td><td>#b2ff54</td><td>Back Stage</td></tr>
+        <tr><td>--color-secondary-dark</td><td>#44212a</td><td>Back Stage</td></tr>
+        <tr><td>--color-hover-overlay</td><td>rgba(59,59,59,0.1)</td><td>Primary Button Hover</td></tr>
+        <tr><td>--color-light-text</td><td>rgba(59,59,59,0.5)</td><td>Light Text / 50% Dark</td></tr>
+        <tr><td>--color-bg-grey</td><td>rgba(59,59,59,0.05)</td><td>BG: Grey / Light Grey</td></tr>
       </tbody>
     </table>
   </section>

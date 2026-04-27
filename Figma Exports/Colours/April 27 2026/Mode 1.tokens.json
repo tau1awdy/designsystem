@@ -1,0 +1,375 @@
+{
+  "Primary Actually": {
+    "$type": "color",
+    "$value": "{Front Stage.Primary Color}",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:658:2491",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.isOverride": true
+    }
+  },
+  "Secondary Dark": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0.2685546875,
+        0.12984918057918549,
+        0.16452556848526
+      ],
+      "alpha": 1,
+      "hex": "#44212A"
+    },
+    "$extensions": {
+      "com.figma.variableId": "VariableID:877:9102",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.isOverride": true
+    }
+  },
+  "Front Stage": {
+    "Primary Color": {
+      "$type": "color",
+      "$value": "{Back Stage (Brand).My Black}",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:139:150",
+        "com.figma.scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "STROKE",
+          "EFFECT_COLOR"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "My Secondary": {
+      "$type": "color",
+      "$value": "{Back Stage (Brand).White}",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:877:9157",
+        "com.figma.scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "STROKE",
+          "EFFECT_COLOR"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "Brain Primary": {
+      "$type": "color",
+      "$value": "{Back Stage (Brand).Brain Blue}",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:877:9151",
+        "com.figma.scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "STROKE",
+          "EFFECT_COLOR"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "Brain Secondary": {
+      "$type": "color",
+      "$value": "{Back Stage (Brand).Brain Aqua}",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:141:164",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "Pretty Primary": {
+      "$type": "color",
+      "$value": "{Back Stage (Brand).Pretty Maroon}",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:877:9152",
+        "com.figma.scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "STROKE",
+          "EFFECT_COLOR"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "Pretty Secondary": {
+      "$type": "color",
+      "$value": "{Back Stage (Brand).Pretty Pink}",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:877:9156",
+        "com.figma.scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "STROKE",
+          "EFFECT_COLOR"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "White": {
+      "$type": "color",
+      "$value": "{Back Stage (Brand).White}",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:141:180",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "Primary Button Hover": {
+      "$type": "color",
+      "$value": "{Back Stage (Brand).10% Dark}",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:141:181",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "Light Text": {
+      "$type": "color",
+      "$value": "{Back Stage (Brand).50% Dark}",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:149:146",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "Main Text": {
+      "$type": "color",
+      "$value": "{Back Stage (Brand).Brain Blue}",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:149:147",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "BG: Grey": {
+      "$type": "color",
+      "$value": "{Back Stage (Brand).Light Grey}",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:174:416",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.isOverride": true
+      }
+    }
+  },
+  "Back Stage (Brand)": {
+    "My Black": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.17072941362857819,
+          0.17072941362857819,
+          0.17072941362857819
+        ],
+        "alpha": 1,
+        "hex": "#2C2C2C"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:877:9150",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "Brain Blue": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.1725490242242813,
+          0.20000000298023224,
+          0.2549019753932953
+        ],
+        "alpha": 1,
+        "hex": "#2C3341"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:141:309",
+        "com.figma.isOverride": true
+      }
+    },
+    "Pretty Maroon": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.2873910665512085,
+          0.04990268126130104,
+          0.10135849565267563
+        ],
+        "alpha": 1,
+        "hex": "#490D1A"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:877:9148",
+        "com.figma.isOverride": true
+      }
+    },
+    "Other Green": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.18352942168712616,
+          0.2549019753932953,
+          0.1725490242242813
+        ],
+        "alpha": 1,
+        "hex": "#2F412C"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:877:9149",
+        "com.figma.isOverride": true
+      }
+    },
+    "Pretty Pink": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.239215686917305,
+          0.48235294222831726
+        ],
+        "alpha": 1,
+        "hex": "#FF3D7B"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:141:310",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "Other Lime": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6980618834495544,
+          1,
+          0.3290264308452606
+        ],
+        "alpha": 1,
+        "hex": "#B2FF54"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:877:9154",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "Brain Aqua": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.634765625,
+          0.7686849236488342,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#A2C4FF"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:877:9155",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "White": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:141:311",
+        "com.figma.isOverride": true
+      }
+    },
+    "10% Dark": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.23137255012989044,
+          0.23137255012989044,
+          0.23137255012989044
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#3B3B3B"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:141:312",
+        "com.figma.isOverride": true
+      }
+    },
+    "50% Dark": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.23137255012989044,
+          0.23137255012989044,
+          0.23137255012989044
+        ],
+        "alpha": 0.5,
+        "hex": "#3B3B3B"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:149:145",
+        "com.figma.isOverride": true
+      }
+    },
+    "Light Grey": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.23137255012989044,
+          0.23137255012989044,
+          0.23137255012989044
+        ],
+        "alpha": 0.05000000074505806,
+        "hex": "#3B3B3B"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:174:415",
+        "com.figma.isOverride": true
+      }
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Mode 1"
+  }
+}
