@@ -72,10 +72,7 @@
   /* Shader canvas fills the entire button (ring + face area). */
   .dither-btn .shader-host {
     position: absolute;
-    top: 1px;
-    left: 1px;
-    right: 1px;
-    bottom: 1px;
+    inset: 0;
     border-radius: inherit;
     overflow: hidden;
     z-index: 0;
@@ -120,10 +117,7 @@
      above the shader, below the text. */
   .dither-btn .noise {
     position: absolute;
-    top: 1px;
-    left: 1px;
-    right: 1px;
-    bottom: 1px;
+    inset: 0;
     border-radius: inherit;
     z-index: 1;
     pointer-events: none;
