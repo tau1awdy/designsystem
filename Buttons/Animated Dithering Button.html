@@ -80,6 +80,16 @@
     display: block;
   }
 
+  .dither-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid var(--stage-bg);
+    pointer-events: none;
+    z-index: 1;
+  }
+
   /* The white inner pill — sits 4px inside, hiding all but the ring + noise. */
   .dither-btn .face {
     position: relative;
@@ -88,12 +98,10 @@
     padding: 10px 16px;                  /* 10 top/bottom · 16 sides */
     transition: margin 140ms ease, font-weight 140ms ease;
     background: var(--stage-bg);         /* match page bg, not white */
-    border: 1px solid var(--stage-bg);
     border-radius: 999px;
     box-sizing: border-box;
     /* prominent inner shadow */
     box-shadow:
-      inset 0 0 0 0.5px rgba(44,44,44,0.14),
       inset 0 2px 3px rgba(44,44,44,0.22),
       inset 0 3px 6px -2px rgba(44,44,44,0.10),
       inset 0 -1px 2px rgba(255,255,255,0.30);
