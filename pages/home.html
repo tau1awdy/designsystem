@@ -23,16 +23,21 @@ html, body {
   text-rendering: geometricPrecision;
 }
 
-.page-wrapper {
+.page-border {
   position: fixed;
   top: 20px;
   left: 20px;
   right: 20px;
   bottom: 20px;
   border-radius: 45px;
-  overflow: hidden;
   filter: drop-shadow(0 1px 1.5px rgba(44,44,44,0.14));
-  transform: translateZ(0);
+}
+
+.page-wrapper {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
 }
 
 .page-shader-host {
@@ -160,7 +165,7 @@ html, body {
 }
 
 @media (max-width: 768px) {
-  .page-wrapper {
+  .page-border {
     top: 10px;
     left: 10px;
     right: 10px;
@@ -170,7 +175,7 @@ html, body {
   .page-content {
     margin: 10px;
     height: calc(100% - 20px);
-    border-radius: 26px;
+    border-radius: 17px;
     padding: var(--space-4);
   }
 
@@ -205,6 +210,7 @@ html, body {
 </head>
 <body>
 
+<div class="page-border">
 <div class="page-wrapper">
   <div class="page-shader-host"><canvas id="border-canvas"></canvas></div>
   <div class="page-noise"></div>
@@ -253,6 +259,7 @@ html, body {
     </div>
     </div>
   </div>
+</div>
 </div>
 
 <script>
