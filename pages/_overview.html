@@ -10,71 +10,161 @@
 <link rel="stylesheet" href="../css/design-tokens.css" />
 <link rel="stylesheet" href="../css/layout.css" />
 <style>
-.page-preview-card {
+.page-gallery {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.preview-card {
   background: var(--color-surface);
   border: 1px solid var(--color-gray-200);
   border-radius: var(--radius-md);
   overflow: hidden;
   transition: border-color var(--transition-fast);
-  margin-bottom: var(--space-6);
 }
 
-.page-preview-card:hover {
+.preview-card:hover {
   border-color: var(--color-gray-400);
 }
 
-.page-preview-thumb {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-gray-200);
+.preview-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-6) var(--space-6) 0;
 }
 
-.page-preview-thumb iframe {
+.preview-frame {
   width: 100%;
-  height: 100%;
-  border: 0;
+  max-width: 560px;
+  aspect-ratio: 16 / 10;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  background: var(--color-bg);
+  border: 1px solid var(--color-gray-200);
+  box-shadow: 0 2px 8px rgba(44,44,44,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-frame-inner {
+  position: relative;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow:
+    inset 0 1px 2px rgba(44,44,44,0.15),
+    inset 0 0 0 0.5px rgba(44,44,44,0.06);
+  background: var(--color-bg);
+}
+
+.preview-frame-inner::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(44,44,44,0.08) 0px,
+    rgba(44,44,44,0.08) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  mask: linear-gradient(to top, transparent 0%, #000 30%, #000 70%, transparent 100%);
+  -webkit-mask: linear-gradient(to top, transparent 0%, #000 30%, #000 70%, transparent 100%);
   pointer-events: none;
 }
 
-.page-preview-info {
+.preview-logo {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--color-gray-400);
+  margin-bottom: 2px;
+}
+
+.preview-headline {
+  width: 70%;
+  height: 10px;
+  background: var(--color-gray-800);
+  border-radius: 2px;
+  opacity: 0.85;
+}
+
+.preview-subtitle {
+  width: 40%;
+  height: 7px;
+  background: var(--color-gray-300);
+  border-radius: 2px;
+  margin-bottom: 4px;
+}
+
+.preview-btn-row {
+  display: flex;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.preview-btn-row .pbtn {
+  width: 52px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--color-ink);
+  opacity: 0.12;
+}
+
+.preview-btn-row .pbtn-sub {
+  width: 52px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--color-ink);
+  opacity: 0.12;
+}
+
+.preview-footer {
   padding: var(--space-5);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-4);
+  border-top: 1px solid var(--color-gray-100);
 }
 
-.page-preview-info h3 {
+.preview-footer h3 {
   font-size: var(--text-lg);
   font-weight: var(--font-weight-semibold);
   margin: 0 0 var(--space-1) 0;
 }
 
-.page-preview-info .description {
+.preview-footer .desc {
   font-size: var(--text-sm);
   color: var(--color-gray-400);
   margin: 0;
   line-height: var(--line-height-base);
 }
 
-.page-preview-meta {
+.preview-meta {
   display: flex;
   gap: var(--space-2);
   margin-top: var(--space-3);
   flex-wrap: wrap;
 }
 
-.page-preview-actions {
-  display: flex;
-  gap: var(--space-2);
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.page-preview-link {
+.preview-link {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -86,37 +176,33 @@
   font-weight: var(--font-weight-medium);
   transition: opacity var(--transition-fast);
   text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.page-preview-link:hover {
+.preview-link:hover {
   opacity: 0.85;
 }
 
-.page-preview-link .arrow {
+.preview-link .arrow {
   font-size: var(--text-xs);
   transition: transform var(--transition-fast);
 }
 
-.page-preview-link:hover .arrow {
+.preview-link:hover .arrow {
   transform: translateX(2px);
 }
 
 @media (max-width: 768px) {
-  .page-preview-thumb {
-    height: 240px;
-  }
-
-  .page-preview-info {
+  .preview-footer {
     flex-direction: column;
   }
-
-  .page-preview-actions {
-    width: 100%;
-  }
-
-  .page-preview-link {
+  .preview-link {
     width: 100%;
     justify-content: center;
+  }
+  .preview-frame {
+    aspect-ratio: 16 / 11;
   }
 }
 </style>
@@ -141,26 +227,44 @@
   </div>
 
   <section class="page-section">
-    <div class="page-preview-card">
-      <div class="page-preview-thumb">
-        <iframe src="home.html" title="Home page preview" loading="lazy"></iframe>
-      </div>
-      <div class="page-preview-info">
-        <div>
-          <h3>Home</h3>
-          <p class="description">Full-viewport hero page with animated dithering border, headline logo, subtitle, and 5 CTA buttons in a 3+2 grid layout.</p>
-          <div class="page-preview-meta">
-            <span class="chip chip-neutral">Live WebGL shader</span>
-            <span class="chip chip-neutral">Warp dithering</span>
-            <span class="chip chip-neutral">Responsive</span>
+    <div class="page-gallery">
+
+      <!-- Home Page -->
+      <div class="preview-card">
+        <div class="preview-body">
+          <div class="preview-frame">
+            <div class="preview-frame-inner">
+              <div class="preview-logo">P</div>
+              <div class="preview-headline"></div>
+              <div class="preview-subtitle"></div>
+              <div class="preview-btn-row">
+                <div class="pbtn"></div>
+                <div class="pbtn"></div>
+                <div class="pbtn"></div>
+              </div>
+              <div class="preview-btn-row">
+                <div class="pbtn-sub"></div>
+                <div class="pbtn-sub"></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="page-preview-actions">
-          <a href="home.html" class="page-preview-link">
+        <div class="preview-footer">
+          <div>
+            <h3>Home</h3>
+            <p class="desc">Full-viewport hero page with animated dithering border, brand logo, headline, subtitle, and 5 CTA buttons in a 3+2 grid.</p>
+            <div class="preview-meta">
+              <span class="chip chip-neutral">WebGL warp shader</span>
+              <span class="chip chip-neutral">Animated border</span>
+              <span class="chip chip-neutral">3+2 button grid</span>
+            </div>
+          </div>
+          <a href="home.html" class="preview-link">
             Open Page <span class="arrow">→</span>
           </a>
         </div>
       </div>
+
     </div>
   </section>
 </main>
