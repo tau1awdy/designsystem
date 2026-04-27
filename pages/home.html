@@ -92,27 +92,28 @@ html, body {
     inset 0 -1px 2px rgba(255,255,255,0.30);
 }
 
-.page-inner {
+.page-section {
+  display: none;
   margin: auto;
-  display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: var(--space-6);
+  width: 100%;
+}
+
+.page-section.active {
+  display: flex;
 }
 
 .page-logo {
-  width: 48px;
-  height: 48px;
-  border: 1.5px solid var(--color-gray-300);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--text-xl);
-  color: var(--color-gray-400);
-  margin-bottom: var(--space-2);
+  display: block;
+  width: 85px;
+  height: 92px;
+  margin: 0 auto var(--space-2);
+  border: 0;
+  background: none;
+  cursor: pointer;
 }
 
 .page-hero {
@@ -175,6 +176,53 @@ html, body {
   justify-content: center;
 }
 
+.page-section-heading {
+  font-size: clamp(20pt, 3vw, 32pt);
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+}
+
+.page-section-text {
+  font-size: var(--text-lg);
+  color: var(--color-gray-400);
+  max-width: 500px;
+  margin: 0;
+}
+
+.page-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.page-back-link:hover {
+  color: var(--color-ink);
+}
+
+.transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.transition-overlay.visible {
+  opacity: 1;
+}
+
+.transition-overlay canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 @media (max-width: 768px) {
   .page-border {
     top: 15px;
@@ -188,10 +236,6 @@ html, body {
     height: calc(100% - 26px);
     border-radius: 34px;
     padding: var(--space-4);
-  }
-
-  .page-inner {
-    gap: var(--space-6);
   }
 
   .page-hero h1 {
@@ -229,50 +273,98 @@ html, body {
   <div class="page-noise"></div>
 
   <div class="page-content">
-    <div class="page-inner">
-    <div class="page-logo">P</div>
 
-    <div class="page-hero">
-      <h1>A good Lead Product Designer, but not in that boring way…</h1>
-      <p class="subtitle">How do you want to start?</p>
-    </div>
+    <!-- Section: Home -->
+    <div class="page-section active" id="section-home">
+      <img class="page-logo" src="../brand/Logos/cartoonp.svg" alt="Portfolio" id="logo-img" width="85" height="92">
 
-    <div class="page-actions">
-      <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader>
-        <span class="shader-host"><canvas></canvas></span>
-        <span class="noise"></span>
-        <span class="face">Projects</span>
-      </button></div>
+      <div class="page-hero">
+        <h1>A good Lead Product Designer, but not in that boring way…</h1>
+        <p class="subtitle">How do you want to start?</p>
+      </div>
 
-      <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader>
-        <span class="shader-host"><canvas></canvas></span>
-        <span class="noise"></span>
-        <span class="face">Writing</span>
-      </button></div>
-
-      <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader>
-        <span class="shader-host"><canvas></canvas></span>
-        <span class="noise"></span>
-        <span class="face">Speaking</span>
-      </button></div>
-
-      <div class="page-actions-row-bottom">
-        <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader>
+      <div class="page-actions">
+        <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader data-target="projects">
           <span class="shader-host"><canvas></canvas></span>
           <span class="noise"></span>
-          <span class="face">Contact</span>
+          <span class="face">Projects</span>
         </button></div>
 
-        <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader>
+        <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader data-target="writing">
           <span class="shader-host"><canvas></canvas></span>
           <span class="noise"></span>
-          <span class="face">Resume</span>
+          <span class="face">Writing</span>
         </button></div>
+
+        <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader data-target="speaking">
+          <span class="shader-host"><canvas></canvas></span>
+          <span class="noise"></span>
+          <span class="face">Speaking</span>
+        </button></div>
+
+        <div class="page-actions-row-bottom">
+          <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader data-target="contact">
+            <span class="shader-host"><canvas></canvas></span>
+            <span class="noise"></span>
+            <span class="face">Contact</span>
+          </button></div>
+
+          <div class="dither-btn-wrapper"><button class="dither-btn lg" type="button" data-shader data-target="resume">
+            <span class="shader-host"><canvas></canvas></span>
+            <span class="noise"></span>
+            <span class="face">Resume</span>
+          </button></div>
+        </div>
       </div>
     </div>
+
+    <!-- Section: Projects -->
+    <div class="page-section" id="section-projects">
+      <img class="page-logo" src="../brand/Logos/cartoonp.svg" alt="Portfolio" width="85" height="92" style="cursor:pointer" onclick="navigateTo('home')">
+      <h2 class="page-section-heading">Projects</h2>
+      <p class="page-section-text">A selection of product design work, case studies, and explorations.</p>
+      <p><a class="page-back-link" onclick="navigateTo('home')">← Back home</a></p>
     </div>
+
+    <!-- Section: Writing -->
+    <div class="page-section" id="section-writing">
+      <img class="page-logo" src="../brand/Logos/cartoonp.svg" alt="Portfolio" width="85" height="92" style="cursor:pointer" onclick="navigateTo('home')">
+      <h2 class="page-section-heading">Writing</h2>
+      <p class="page-section-text">Essays, articles, and thoughts on design, product, and the craft.</p>
+      <p><a class="page-back-link" onclick="navigateTo('home')">← Back home</a></p>
+    </div>
+
+    <!-- Section: Speaking -->
+    <div class="page-section" id="section-speaking">
+      <img class="page-logo" src="../brand/Logos/cartoonp.svg" alt="Portfolio" width="85" height="92" style="cursor:pointer" onclick="navigateTo('home')">
+      <h2 class="page-section-heading">Speaking</h2>
+      <p class="page-section-text">Talks, workshops, and panels — sharing ideas with the design community.</p>
+      <p><a class="page-back-link" onclick="navigateTo('home')">← Back home</a></p>
+    </div>
+
+    <!-- Section: Contact -->
+    <div class="page-section" id="section-contact">
+      <img class="page-logo" src="../brand/Logos/cartoonp.svg" alt="Portfolio" width="85" height="92" style="cursor:pointer" onclick="navigateTo('home')">
+      <h2 class="page-section-heading">Contact</h2>
+      <p class="page-section-text">Let's work together. Reach out for projects, collaborations, or just to say hello.</p>
+      <p><a class="page-back-link" onclick="navigateTo('home')">← Back home</a></p>
+    </div>
+
+    <!-- Section: Resume -->
+    <div class="page-section" id="section-resume">
+      <img class="page-logo" src="../brand/Logos/cartoonp.svg" alt="Portfolio" width="85" height="92" style="cursor:pointer" onclick="navigateTo('home')">
+      <h2 class="page-section-heading">Resume</h2>
+      <p class="page-section-text">Experience, education, and the journey so far.</p>
+      <p><a class="page-back-link" onclick="navigateTo('home')">← Back home</a></p>
+    </div>
+
   </div>
 </div>
+</div>
+
+<!-- Transition overlay -->
+<div class="transition-overlay" id="transition-overlay">
+  <canvas id="transition-canvas"></canvas>
 </div>
 
 <script>
@@ -595,7 +687,7 @@ html, body {
     ctxs.push({ canvas, ...ctx, t0: performance.now() + Math.random() * 5000 });
   });
 
-  function resize() {
+  function resizeBtn() {
     for (const c of ctxs) {
       const rect = c.canvas.getBoundingClientRect();
       const w = Math.max(2, Math.round(rect.width * dpr));
@@ -606,10 +698,10 @@ html, body {
       }
     }
   }
-  resize();
-  window.addEventListener('resize', resize);
+  resizeBtn();
+  window.addEventListener('resize', resizeBtn);
 
-  function frame() {
+  function frameBtn() {
     const now = performance.now();
     for (const c of ctxs) {
       const t = (now - c.t0) / 1000;
@@ -629,9 +721,263 @@ html, body {
       gl.uniform1f(c.uAspect, c.canvas.width / c.canvas.height);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
     }
-    requestAnimationFrame(frame);
+    requestAnimationFrame(frameBtn);
   }
-  if (ctxs.length) requestAnimationFrame(frame);
+  if (ctxs.length) requestAnimationFrame(frameBtn);
+})();
+
+(function() {
+  const VERT = `
+    attribute vec2 a_pos;
+    varying vec2 v_uv;
+    void main() {
+      v_uv = a_pos * 0.5 + 0.5;
+      gl_Position = vec4(a_pos, 0.0, 1.0);
+    }
+  `;
+
+  const FRAG = `
+    precision highp float;
+    varying vec2 v_uv;
+    uniform vec2 u_resolution;
+    uniform float u_time;
+    uniform vec3 u_colorBack;
+    uniform vec3 u_colorFront;
+    uniform float u_size;
+    uniform float u_scale;
+    uniform float u_speed;
+    uniform float u_offsetX;
+    uniform float u_aspect;
+
+    float bayer4(vec2 p) {
+      int x = int(mod(p.x, 4.0));
+      int y = int(mod(p.y, 4.0));
+      int idx = x + y * 4;
+      float v = 0.0;
+      if (idx == 0)  v =  0.0;
+      else if (idx == 1)  v =  8.0;
+      else if (idx == 2)  v =  2.0;
+      else if (idx == 3)  v = 10.0;
+      else if (idx == 4)  v = 12.0;
+      else if (idx == 5)  v =  4.0;
+      else if (idx == 6)  v = 14.0;
+      else if (idx == 7)  v =  6.0;
+      else if (idx == 8)  v =  3.0;
+      else if (idx == 9)  v = 11.0;
+      else if (idx == 10) v =  1.0;
+      else if (idx == 11) v =  9.0;
+      else if (idx == 12) v = 15.0;
+      else if (idx == 13) v =  7.0;
+      else if (idx == 14) v = 13.0;
+      else                v =  5.0;
+      return (v + 0.5) / 16.0;
+    }
+
+    void main() {
+      vec2 px = gl_FragCoord.xy;
+      vec2 blockPx = floor(px / u_size) * u_size + 0.5 * u_size;
+      vec2 blockUV = blockPx / u_resolution;
+      vec2 uv = (blockUV - 0.5);
+      uv.x *= u_aspect;
+      uv /= u_scale;
+      float t = u_time * u_speed;
+      uv.x += u_offsetX;
+      float wave1 = sin(uv.x * 1.5 + t * 1.1) * cos(uv.y * 1.5 + t * 0.9);
+      float wave2 = sin(uv.x * 3.0 + wave1 * 0.8 + t * 1.3) * cos(uv.y * 3.0 + wave1 * 0.6 + t * 1.1);
+      float wave3 = sin((uv.x + wave2 * 0.5) * 5.0 + t * 1.7) * cos((uv.y + wave2 * 0.5) * 5.0 + t * 1.4);
+      float intensity = wave3 * 0.5 + 0.5;
+      intensity = clamp(intensity, 0.0, 1.0);
+      vec2 block = floor(px / u_size);
+      float threshold = bayer4(block);
+      float bit = step(threshold, intensity);
+      vec3 col = mix(u_colorBack, u_colorFront, bit);
+      gl_FragColor = vec4(col, 1.0);
+    }
+  `;
+
+  function compile(gl, type, src) {
+    const sh = gl.createShader(type);
+    gl.shaderSource(sh, src);
+    gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+      console.error('shader error', gl.getShaderInfoLog(sh));
+      gl.deleteShader(sh);
+      return null;
+    }
+    return sh;
+  }
+
+  function makeProgram(gl) {
+    const vs = compile(gl, gl.VERTEX_SHADER, VERT);
+    const fs = compile(gl, gl.FRAGMENT_SHADER, FRAG);
+    if (!vs || !fs) return null;
+    const p = gl.createProgram();
+    gl.attachShader(p, vs);
+    gl.attachShader(p, fs);
+    gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) {
+      console.error('link error', gl.getProgramInfoLog(p));
+      return null;
+    }
+    return p;
+  }
+
+  function hexRGB(hex) {
+    const n = parseInt(hex.slice(1), 16);
+    return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
+  }
+
+  const tCanvas = document.getElementById('transition-canvas');
+  const overlay = document.getElementById('transition-overlay');
+  const tGl = tCanvas.getContext('webgl', { antialias: false, premultipliedAlpha: false });
+  let tProgram, tBuf, tAPos, tURes, tUTime, tUBack, tUFront, tUSize, tUScale, tUSpeed, tUOffX, tUAspect;
+  let tActive = false, tT0 = 0, tComplete = false;
+
+  if (tGl) {
+    tProgram = makeProgram(tGl);
+    if (tProgram) {
+      tBuf = tGl.createBuffer();
+      tGl.bindBuffer(tGl.ARRAY_BUFFER, tBuf);
+      tGl.bufferData(tGl.ARRAY_BUFFER, new Float32Array([
+        -1, -1,  1, -1,  -1, 1,
+        -1,  1,  1, -1,   1, 1,
+      ]), tGl.STATIC_DRAW);
+      tAPos = tGl.getAttribLocation(tProgram, 'a_pos');
+      tURes = tGl.getUniformLocation(tProgram, 'u_resolution');
+      tUTime = tGl.getUniformLocation(tProgram, 'u_time');
+      tUBack = tGl.getUniformLocation(tProgram, 'u_colorBack');
+      tUFront = tGl.getUniformLocation(tProgram, 'u_colorFront');
+      tUSize = tGl.getUniformLocation(tProgram, 'u_size');
+      tUScale = tGl.getUniformLocation(tProgram, 'u_scale');
+      tUSpeed = tGl.getUniformLocation(tProgram, 'u_speed');
+      tUOffX = tGl.getUniformLocation(tProgram, 'u_offsetX');
+      tUAspect = tGl.getUniformLocation(tProgram, 'u_aspect');
+    }
+  }
+
+  const T_PARAMS = {
+    colorBack: hexRGB('#f5f5f3'),
+    colorFront: hexRGB('#f5f5f3'),
+    size: 24,
+    scale: 1.7,
+    speed: 0.25,
+    offsetX: 0.5,
+  };
+
+  function resizeTransition() {
+    if (!tGl || !tCanvas) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rect = tCanvas.getBoundingClientRect();
+    const w = Math.max(2, Math.round(rect.width * dpr));
+    const h = Math.max(2, Math.round(rect.height * dpr));
+    if (tCanvas.width !== w || tCanvas.height !== h) {
+      tCanvas.width = w;
+      tCanvas.height = h;
+    }
+  }
+  resizeTransition();
+  window.addEventListener('resize', resizeTransition);
+
+  function renderTransition() {
+    if (!tGl || !tProgram || !tActive) return;
+    const t = ((performance.now() - tT0) / 1000);
+    tGl.viewport(0, 0, tCanvas.width, tCanvas.height);
+    tGl.useProgram(tProgram);
+    tGl.bindBuffer(tGl.ARRAY_BUFFER, tBuf);
+    tGl.enableVertexAttribArray(tAPos);
+    tGl.vertexAttribPointer(tAPos, 2, tGl.FLOAT, false, 0, 0);
+    tGl.uniform2f(tURes, tCanvas.width, tCanvas.height);
+    tGl.uniform1f(tUTime, t);
+    tGl.uniform3f(tUBack, ...T_PARAMS.colorBack);
+    tGl.uniform3f(tUFront, ...T_PARAMS.colorFront);
+    tGl.uniform1f(tUSize, T_PARAMS.size);
+    tGl.uniform1f(tUScale, T_PARAMS.scale);
+    tGl.uniform1f(tUSpeed, T_PARAMS.speed);
+    tGl.uniform1f(tUOffX, T_PARAMS.offsetX);
+    tGl.uniform1f(tUAspect, tCanvas.width / tCanvas.height);
+    tGl.drawArrays(tGl.TRIANGLES, 0, 6);
+    requestAnimationFrame(renderTransition);
+  }
+
+  function beginTransition(targetId) {
+    if (tActive) return;
+    tActive = true;
+    tT0 = performance.now();
+    tCanvas.style.display = 'block';
+    renderTransition();
+
+    setTimeout(function() {
+      overlay.classList.add('visible');
+    }, 30);
+
+    setTimeout(function() {
+      var prev = document.querySelector('.page-section.active');
+      if (prev) prev.classList.remove('active');
+      var next = document.getElementById('section-' + targetId);
+      if (next) next.classList.add('active');
+      window.location.hash = targetId;
+    }, 1000);
+
+    setTimeout(function() {
+      overlay.classList.remove('visible');
+      setTimeout(function() {
+        tActive = false;
+        tCanvas.style.display = 'none';
+      }, 350);
+    }, 1600);
+  }
+
+  window.navigateTo = function(targetId) {
+    beginTransition(targetId);
+  };
+
+  document.querySelectorAll('[data-target]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var target = this.getAttribute('data-target');
+      if (target) beginTransition(target);
+    });
+  });
+
+  var hash = window.location.hash.replace('#', '');
+  if (hash && hash !== 'home') {
+    var prev = document.getElementById('section-home');
+    var active = document.getElementById('section-' + hash);
+    if (prev && active) {
+      prev.classList.remove('active');
+      active.classList.add('active');
+    }
+  }
+
+  window.addEventListener('hashchange', function() {
+    var h = window.location.hash.replace('#', '');
+    var prev = document.querySelector('.page-section.active');
+    var next = document.getElementById('section-' + h);
+    if (prev) prev.classList.remove('active');
+    if (next) next.classList.add('active');
+  });
+})();
+
+(function() {
+  var img = document.getElementById('logo-img');
+  if (!img) return;
+  var logos = ['cartoonp.svg', 'fancyp.svg', 'oldtimeyp.svg'];
+  var idx = 0;
+  var interval = null;
+
+  function cycle() {
+    idx = (idx + 1) % 3;
+    img.src = '../brand/Logos/' + logos[idx];
+  }
+
+  img.addEventListener('mouseenter', function() {
+    interval = setInterval(cycle, 1500);
+  });
+
+  img.addEventListener('mouseleave', function() {
+    clearInterval(interval);
+    idx = 0;
+    img.src = '../brand/Logos/cartoonp.svg';
+  });
 })();
 </script>
 </body>
