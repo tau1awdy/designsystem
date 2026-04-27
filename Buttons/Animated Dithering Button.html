@@ -334,7 +334,7 @@
   document.querySelectorAll('[data-shader] canvas').forEach((canvas) => {
     const ctx = setupCanvas(canvas);
     if (!ctx) return;
-    ctxs.push({ canvas, ...ctx });
+    ctxs.push({ canvas, ...ctx, t0: performance.now() + Math.random() * 5000 });
   });
 
   function resize() {
@@ -351,10 +351,10 @@
   resize();
   window.addEventListener('resize', resize);
 
-  const t0 = performance.now();
   function frame() {
-    const t = (performance.now() - t0) / 1000;
+    const now = performance.now();
     for (const c of ctxs) {
+      const t = (now - c.t0) / 1000;
       const { gl, program } = c;
       gl.viewport(0, 0, c.canvas.width, c.canvas.height);
       gl.useProgram(program);
