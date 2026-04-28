@@ -209,18 +209,12 @@ html, body {
   inset: 0;
   z-index: 999;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.transition-overlay.visible {
-  opacity: 1;
 }
 
 .transition-overlay canvas {
   width: 100%;
   height: 100%;
-  display: block;
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -390,6 +384,7 @@ html, body {
     uniform float u_speed;
     uniform float u_offsetX;
     uniform float u_aspect;
+    uniform float u_progress;
 
     float bayer4(vec2 p) {
       int x = int(mod(p.x, 4.0));
@@ -564,6 +559,7 @@ html, body {
     uniform float u_scale;
     uniform float u_offsetY;
     uniform float u_aspect;
+    uniform float u_progress;
 
     float bayer4(vec2 p) {
       int x = int(mod(p.x, 4.0));
@@ -748,6 +744,7 @@ html, body {
     uniform float u_speed;
     uniform float u_offsetX;
     uniform float u_aspect;
+    uniform float u_progress;
 
     float bayer4(vec2 p) {
       int x = int(mod(p.x, 4.0));
@@ -791,6 +788,8 @@ html, body {
       float threshold = bayer4(block);
       float bit = step(threshold, intensity);
       vec3 col = mix(u_colorBack, u_colorFront, bit);
+      vec3 pageBg = vec3(0.9608, 0.9608, 0.9529);
+      col = mix(pageBg, col, u_progress);
       gl_FragColor = vec4(col, 1.0);
     }
   `;
@@ -830,8 +829,8 @@ html, body {
   const tCanvas = document.getElementById('transition-canvas');
   const overlay = document.getElementById('transition-overlay');
   const tGl = tCanvas.getContext('webgl', { antialias: false, premultipliedAlpha: false });
-  let tProgram, tBuf, tAPos, tURes, tUTime, tUBack, tUFront, tUSize, tUScale, tUSpeed, tUOffX, tUAspect;
-  let tActive = false, tT0 = 0, tComplete = false;
+  let tProgram, tBuf, tAPos, tURes, tUTime, tUBack, tUFront, tUSize, tUScale, tUSpeed, tUOffX, tUAspect, tUProgress;
+  let tActive = false, tT0 = 0, tProgress = 0;
 
   if (tGl) {
     tProgram = makeProgram(tGl);
@@ -852,12 +851,13 @@ html, body {
       tUSpeed = tGl.getUniformLocation(tProgram, 'u_speed');
       tUOffX = tGl.getUniformLocation(tProgram, 'u_offsetX');
       tUAspect = tGl.getUniformLocation(tProgram, 'u_aspect');
+      tUProgress = tGl.getUniformLocation(tProgram, 'u_progress');
     }
   }
 
   const T_PARAMS = {
-    colorBack: hexRGB('#f5f5f3'),
-    colorFront: hexRGB('#f5f5f3'),
+    colorBack: hexRGB('#2c2c2c'),
+    colorFront: hexRGB('#ffffff'),
     size: 24,
     scale: 1.7,
     speed: 0.25,
@@ -880,14 +880,14 @@ html, body {
 
   function renderTransition() {
     if (!tGl || !tProgram || !tActive) return;
-    const t = ((performance.now() - tT0) / 1000);
+    const elapsed = (performance.now() - tT0) / 1000;
     tGl.viewport(0, 0, tCanvas.width, tCanvas.height);
     tGl.useProgram(tProgram);
     tGl.bindBuffer(tGl.ARRAY_BUFFER, tBuf);
     tGl.enableVertexAttribArray(tAPos);
     tGl.vertexAttribPointer(tAPos, 2, tGl.FLOAT, false, 0, 0);
     tGl.uniform2f(tURes, tCanvas.width, tCanvas.height);
-    tGl.uniform1f(tUTime, t);
+    tGl.uniform1f(tUTime, elapsed);
     tGl.uniform3f(tUBack, ...T_PARAMS.colorBack);
     tGl.uniform3f(tUFront, ...T_PARAMS.colorFront);
     tGl.uniform1f(tUSize, T_PARAMS.size);
@@ -895,6 +895,7 @@ html, body {
     tGl.uniform1f(tUSpeed, T_PARAMS.speed);
     tGl.uniform1f(tUOffX, T_PARAMS.offsetX);
     tGl.uniform1f(tUAspect, tCanvas.width / tCanvas.height);
+    tGl.uniform1f(tUProgress, tProgress);
     tGl.drawArrays(tGl.TRIANGLES, 0, 6);
     requestAnimationFrame(renderTransition);
   }
@@ -902,29 +903,48 @@ html, body {
   function beginTransition(targetId) {
     if (tActive) return;
     tActive = true;
+    tProgress = 0;
     tT0 = performance.now();
     tCanvas.style.display = 'block';
+
+    var startTime = performance.now();
+    var phase = 'fadein';
+
+    function tick() {
+      var now = performance.now();
+      var dt = (now - startTime) / 1000;
+
+      if (phase === 'fadein') {
+        tProgress = Math.min(dt / 0.8, 1);
+        if (dt >= 0.8) {
+          phase = 'hold';
+          startTime = now;
+        }
+      } else if (phase === 'hold') {
+        tProgress = 1;
+        if (dt >= 0.4) {
+          var prev = document.querySelector('.page-section.active');
+          if (prev) prev.classList.remove('active');
+          var next = document.getElementById('section-' + targetId);
+          if (next) next.classList.add('active');
+          window.location.hash = targetId;
+          phase = 'fadeout';
+          startTime = now;
+        }
+      } else if (phase === 'fadeout') {
+        tProgress = Math.max(1 - dt / 0.6, 0);
+        if (dt >= 0.6) {
+          tActive = false;
+          tCanvas.style.display = 'none';
+          return;
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }
+
     renderTransition();
-
-    setTimeout(function() {
-      overlay.classList.add('visible');
-    }, 30);
-
-    setTimeout(function() {
-      var prev = document.querySelector('.page-section.active');
-      if (prev) prev.classList.remove('active');
-      var next = document.getElementById('section-' + targetId);
-      if (next) next.classList.add('active');
-      window.location.hash = targetId;
-    }, 1000);
-
-    setTimeout(function() {
-      overlay.classList.remove('visible');
-      setTimeout(function() {
-        tActive = false;
-        tCanvas.style.display = 'none';
-      }, 350);
-    }, 1600);
+    tick();
   }
 
   window.navigateTo = function(targetId) {
