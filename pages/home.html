@@ -118,6 +118,12 @@ html, body {
   background-repeat: no-repeat;
   background-position: center;
   flex-shrink: 0;
+  transition: transform var(--transition-base);
+  transform: none;
+}
+
+.page-logo:hover {
+  transform: scale(1.08);
 }
 
 .page-hero {
