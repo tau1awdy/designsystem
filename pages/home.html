@@ -121,14 +121,6 @@ html, body {
 
 .page-logo:hover {
   transform: scale(1.08);
-  animation: logo-cycle 4.5s steps(1) infinite;
-}
-
-@keyframes logo-cycle {
-  0%, 30%  { background-image: url('../brand/Logos/cartoonp.svg'); }
-  33%, 63% { background-image: url('../brand/Logos/fancyp.svg'); }
-  66%, 96% { background-image: url('../brand/Logos/oldtimeyp.svg'); }
-  100%     { background-image: url('../brand/Logos/cartoonp.svg'); }
 }
 
 .page-hero {
@@ -178,7 +170,7 @@ html, body {
 }
 
 .page-actions .dither-btn-wrapper {
-  height: 66px;
+  height: 70px;
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
@@ -972,6 +964,37 @@ html, body {
   });
 })();
 
+(function() {
+  var base = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+  var path = window.location.pathname;
+  var idx = path.indexOf('/designsystem');
+  var root = base + (idx >= 0 ? path.substring(0, idx + 13) : '/designsystem') + '/brand/Logos/';
+  var logos = [root + 'cartoonp.svg', root + 'fancyp.svg', root + 'oldtimeyp.svg'];
+  var cur = 0, timer = null;
+
+  function findLogo() {
+    var active = document.querySelector('.page-section.active');
+    return active ? active.querySelector('.page-logo') : null;
+  }
+
+  document.querySelectorAll('.page-logo').forEach(function(el) {
+    el.addEventListener('mouseenter', function() {
+      clearInterval(timer);
+      timer = setInterval(function() {
+        cur = (cur + 1) % 3;
+        var logo = findLogo();
+        if (logo) logo.style.backgroundImage = 'url(' + logos[cur] + ')';
+      }, 1500);
+    });
+
+    el.addEventListener('mouseleave', function() {
+      clearInterval(timer);
+      cur = 0;
+      var logo = findLogo();
+      if (logo) logo.style.backgroundImage = 'url(' + logos[0] + ')';
+    });
+  });
+})();
 </script>
 </body>
 </html>

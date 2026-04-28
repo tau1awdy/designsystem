@@ -70,10 +70,10 @@
 
 .dither-btn.lg .face { padding: 14px 22px; font-size: var(--text-lg); }
 .dither-btn.xl .face { padding: 23px 34px; font-size: var(--text-xl); margin: 8px; }
-.dither-btn.xl:hover .face { margin: 12px; }
+.dither-btn.xl:hover .face { margin: 14px; }
 
 .dither-btn:hover .face {
-  margin: 9px;
+  margin: 11px;
   font-weight: var(--font-weight-bold);
 }
 
