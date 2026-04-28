@@ -121,7 +121,12 @@ html, body {
 }
 
 .page-logo:hover {
-  transform: scale(1.08);
+  animation: logo-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes logo-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
 }
 
 .page-hero {
