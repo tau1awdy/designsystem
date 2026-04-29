@@ -23,7 +23,7 @@
 }
 
 .dither-btn:active { transform: translateY(1px); }
-.dither-btn:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 4px; }
+.dither-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
 
 .dither-btn .shader-host {
   position: absolute;
@@ -41,8 +41,6 @@
   display: block;
   opacity: 0.9;
 }
-
-
 
 .dither-btn .face {
   position: relative;
@@ -62,7 +60,7 @@
   font-size: var(--text-base);
   line-height: 1;
   letter-spacing: 0.01em;
-  color: var(--color-ink);
+  color: var(--color-text-primary);
   text-align: center;
   display: inline-flex;
   align-items: center;
@@ -97,13 +95,4 @@
   50%  { background-position: -3px 12px; }
   75%  { background-position: 6px -2px; }
   100% { background-position: 0 0; }
-}
-
-.dither-btn.lg .face { padding: 14px 22px; font-size: var(--text-lg); }
-.dither-btn.xl .face { padding: 23px 34px; font-size: var(--text-xl); margin: 6px; }
-.dither-btn.xl:hover .face { margin: 10px; }
-
-.dither-btn:hover .face {
-  margin: 7px;
-  font-weight: var(--font-weight-bold);
 }

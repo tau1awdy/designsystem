@@ -1,11 +1,13 @@
 :root {
   --color-black: #2c2c2c;
-  --color-ink: #2c2c2c;
   --color-white: #ffffff;
-  --color-bg: #f5f5f3;
-  --color-surface: #ffffff;
-  --color-primary: #2c2c2c;
-  --color-accent: #4a4a4a;
+  --color-bg: #1c1c1c;
+  --color-bg-sidebar: #141414;
+  --color-surface: #222222;
+  --color-surface-hover: #2a2a2a;
+  --color-primary: #fffff0;
+  --color-accent: #2d62ff;
+  --color-accent-hover: #1e4fd8;
 
   --color-brain-blue: #2c3341;
   --color-brain-aqua: #a2c4ff;
@@ -15,9 +17,10 @@
   --color-other-lime: #b2ff54;
   --color-secondary-dark: #44212a;
 
-  --color-hover-overlay: rgba(59, 59, 59, 0.1);
-  --color-light-text: rgba(59, 59, 59, 0.5);
-  --color-bg-grey: rgba(59, 59, 59, 0.05);
+  --color-text-primary: #fffff0;
+  --color-text-secondary: #8a8a8a;
+  --color-text-muted: #6b6b6b;
+  --color-border-subtle: #333333;
 
   --color-gray-50: #f8f8f6;
   --color-gray-100: #f0f0ed;
@@ -30,13 +33,13 @@
   --color-gray-800: #2c2c2a;
   --color-gray-900: #1a1a18;
 
-  --color-success: #2e7d32;
-  --color-warning: #b26a00;
-  --color-error: #b71c1c;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
 
-  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Menlo", monospace;
+  --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", "Fira Mono", "Menlo", monospace;
 
   --font-weight-normal: 400;
   --font-weight-medium: 500;
@@ -83,16 +86,17 @@
   --radius-lg: 20px;
   --radius-full: 999px;
 
-  --shadow-sm: 0 1px 1.5px rgba(44, 44, 44, 0.14);
-  --shadow-md: 0 2px 4px rgba(44, 44, 44, 0.1);
-  --shadow-lg: 0 4px 12px rgba(44, 44, 44, 0.1);
-  --shadow-xl: 0 8px 24px rgba(44, 44, 44, 0.1);
+  --shadow-sm: 0 1px 1.5px rgba(0, 0, 0, 0.14);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.1);
 
   --transition-fast: 120ms ease;
   --transition-base: 140ms ease;
   --transition-slow: 250ms ease;
 
-  --sidebar-width: 260px;
-  --sidebar-bg: #ffffff;
-  --content-max-width: 960px;
+  --sidebar-width: 300px;
+  --sidebar-bg: #141414;
+  --content-max-width: 1200px;
+  --page-padding: 48px;
 }

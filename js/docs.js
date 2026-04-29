@@ -159,8 +159,89 @@ function setupCopyButtons() {
   });
 }
 
+/* === Lenis smooth scroll === */
+function initLenis() {
+  if (typeof Lenis === 'undefined') return;
+  const lenis = new Lenis({ lerp: 0.1, autoRaf: true });
+  lenis.on('scroll', () => { if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.update(); });
+  if (typeof gsap !== 'undefined') {
+    gsap.ticker.add(time => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+  return lenis;
+}
+
+/* === GSAP scroll-triggered entrance animations === */
+function initEntranceAnimations() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  const targets = document.querySelectorAll('.surface-card, .component-preview, .hub-card, .preview-card');
+  if (targets.length === 0) return;
+
+  targets.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+  });
+
+  ScrollTrigger.batch(targets, {
+    start: 'top 85%',
+    onEnter: batch => {
+      gsap.to(batch, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power2.out',
+        overwrite: true,
+      });
+    },
+  });
+}
+
+/* === Scramble heading effect === */
+function initScramble() {
+  document.querySelectorAll('.page-header h1, h2.scramble').forEach(el => {
+    const original = el.textContent;
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+
+    function scramble(final, duration) {
+      const steps = Math.max(8, Math.floor(duration / 60));
+      let step = 0;
+      function next() {
+        if (step >= steps) { el.textContent = final; return; }
+        const progress = step / steps;
+        let result = '';
+        for (let i = 0; i < final.length; i++) {
+          if (i / final.length < progress) {
+            result += final[i];
+          } else {
+            result += chars[Math.floor(Math.random() * chars.length)];
+          }
+        }
+        el.textContent = result;
+        step++;
+        requestAnimationFrame(next);
+      }
+      next();
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          scramble(original, 800);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(el);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   buildSidebar();
   setupMobileToggle();
   setupCopyButtons();
+  initLenis();
+  initEntranceAnimations();
+  initScramble();
 });
